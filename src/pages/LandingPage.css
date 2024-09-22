@@ -72,7 +72,28 @@ body, html {
     color: white;
     font-family: 'Cubest', sans-serif;
 }
+
 .content {
     padding: 20px;
-    background-color: white;
+    min-height: 100vh; /* Makes it take up full viewport height */
+    background-image: url('../assets/exoplanet_desc.png'); /* New background image */
+    background-position: top right;
+    background-repeat: no-repeat;
+    background-color: black;
+    color: black; /* Adjust text color if necessary */
+    padding-left: 120px; /* Adds some space from the left edge */
+
+}
+
+.important-facts {
+    padding: 20px;
+    min-height: 100vh; /* Makes it take up full viewport height */
+    background-image: url('../assets/exoplanet_desc.png'); /* New background image */
+    background-size: 70%;
+    background-position: top right;
+    background-repeat: no-repeat;
+    background-color: black;
+    color: black; /* Adjust text color if necessary */
+    padding-left: 120px; /* Adds some space from the left edge */
+
 }

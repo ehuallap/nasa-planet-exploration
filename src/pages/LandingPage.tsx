@@ -1,5 +1,5 @@
 import './LandingPage.css'
-
+import DDTitle from '../components/DDTitle';
 const LandingPage = () => {
     return (
         <div className='container'>
@@ -12,10 +12,20 @@ const LandingPage = () => {
                 <div className='button-container'>
                         <button className="button">EMPIEZA TU VIAJE</button>
                 </div>
-            </div>
+            </div>  
             <div className="content">
-                <h2>More Content</h2>
-                <p>This is where you can add more information as the user scrolls down.</p>
+                <div className='hero-content'>
+                    <h3 className='slogan'>QUE ES UN EXOPLANETA?</h3>
+                    <p className='description'>A uma distância média de 140 milhões de milhas, Marte é um dos vizinhos habitáveis ​​mais próximos da Terra. Marte está mais ou menos a metade da distância da Terra do Sol, então ainda tem luz solar decente. Está um pouco frio, mas podemos esquentar. Sua atmosfera é composta principalmente de CO2 com um pouco de nitrogênio e argônio e alguns outros oligoelementos, o que significa que podemos cultivar plantas em Marte apenas comprimindo a atmosfera.</p>
+                    <p className='description'>A uma distância média de 140 milhões de milhas, Marte é um dos vizinhos habitáveis ​​mais próximos da Terra. </p>
+                <DDTitle text="Este es una demostracion del ddtitle" color='red' fontSize='80px' />
+                </div>
+            </div>
+
+            <div className='important-facts'>
+                <div className='hero-content'>
+                    <h1>HOLA</h1>
+                </div>
             </div>
         </div>
     );
