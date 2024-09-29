@@ -1,16 +1,20 @@
 import './LandingPage.css'
-import DDTitle from '../components/DDTitle';
+import DDTitle from '../../components/DDTitle';
+import { Link } from 'react-router-dom';
+
 const LandingPage = () => {
+
     return (
         <div className='container'>
             <div className="hero">
                 <div className='hero-content'>
-                    <h3 className='slogan'>DESCUBRE MAS ALLA</h3>
-                    <h1 className='title'>VIAJA Y DESCUBRE NUEVOS EXOPLANETAS</h1>
+                    <h2 className='slogan'>DESCUBRE MAS ALLA</h2>
+                    {/* <h1 className='title'>VIAJA Y DESCUBRE NUEVOS EXOPLANETAS</h1> */}
+                    <DDTitle text='VIAJA Y DESCUBRE NUEVOS EXOPLANETAS' fontSize='80px' color='white'></DDTitle>
                     <p className='description'>Descubre +10,000 exoplanetas en diferentes siustemas solares</p>
                 </div>
                 <div className='button-container'>
-                        <button className="button">EMPIEZA TU VIAJE</button>
+                    <Link to="/mision-description" style={{ textDecoration: 'none' }}><button className="button">EMPIEZA TU VIAJE</button></Link>
                 </div>
             </div>  
             <div className="content">
