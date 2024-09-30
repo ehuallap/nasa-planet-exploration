@@ -2,7 +2,7 @@ import { useRef } from "react";
 import ButtonAudio from '../assets/sounds/button_sound.mp3'
 import { useNavigate } from "react-router-dom";
 
-const DDButton = ({ routeToChange, onClick, className, children,  }) => {
+const DDButton = ({ href, onClick, className, children,  }) => {
     const audioRef = useRef(null); // Referencia para el audio
     const navigate = useNavigate();
     const handleClick = () => {
@@ -13,9 +13,10 @@ const DDButton = ({ routeToChange, onClick, className, children,  }) => {
             audioRef.current.currentTime = 0; // Reinicia el audio
             audioRef.current.play(); // Reproduce el audio
         }
-        if (routeToChange) {
+        if (href) {
             setTimeout(() => {
-            navigate("/mision-description"); // Cambia de ruta
+            //navigate("/mision-description"); // Cambia de ruta
+            navigate(href); // Cambia de ruta
             }, 800);
         }
     };

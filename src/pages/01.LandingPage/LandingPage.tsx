@@ -18,7 +18,7 @@ const LandingPage = () => {
                     <p className='description'>Descubre +10,000 exoplanetas en diferentes siustemas solares</p>
                 </div>
                 <div className='button-container'>
-                    <DDButton routeToChange="mision-description" onClick={consoles} className="button">EMPIEZA TU VIAJE</DDButton>
+                    <DDButton href="mision-description" onClick={consoles} className="button">EMPIEZA TU VIAJE</DDButton>
                 </div>
             </div>  
             <div className="content">
