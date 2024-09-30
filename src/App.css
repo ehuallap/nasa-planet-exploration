@@ -25,6 +25,11 @@ button {
     cursor: pointer;
 }
 
+button:disabled,
+button[disabled] {
+    background-color: #ff9999
+}
+
 button :hover {
     cursor: pointer;
 }
