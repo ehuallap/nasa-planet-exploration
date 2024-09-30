@@ -1,0 +1,16 @@
+.container-mapping{
+    background: rgb(7, 1, 36);
+    background-image: url('../../assets/astronauta-vista-espacio.png');
+    background-size: cover;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.exoplanets-mapping {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Tres columnas iguales */
+    grid-template-rows: repeat(3, 1fr);
+    padding: 5rem 35rem 8rem 5rem;
+    gap: 10rem;
+}

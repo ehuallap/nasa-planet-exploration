@@ -1,7 +1,6 @@
 import DDButton from '../../components/DDButton';
-import useFetchExoplanets from '../../hooks/useExoplanets';
 import useMisionStore from '../../store/store';
-import exoplanetsData from '../../data/exoplanets.json'
+import './Mapping.css'
 const Mapping = () => {
     const { planetarySystem, currentExoplanet, setCurrentExoplanet } = useMisionStore();
     const changeExoplanet = ( option : Number) => {
@@ -10,12 +9,14 @@ const Mapping = () => {
     }
 
     return (
-        <div className='container'>
+        <div className='container-mapping'>
+            <div className='exoplanets-mapping'>
             {
                 planetarySystem.exoplanets.map((exoplanet, index)=>{
                     return <DDButton href="/planet-information" onClick={()=>changeExoplanet(index)}>{exoplanet.name} </DDButton>
                 })
             }
+            </div>
         </div>
     );
 }
