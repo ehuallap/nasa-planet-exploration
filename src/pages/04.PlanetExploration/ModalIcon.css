@@ -1,0 +1,26 @@
+.icon-container {
+    position: relative; /* Para posicionar la ventana modal */
+    display: inline-block; /* Permitir que la imagen se comporte como un bloque en línea */
+  }
+  
+  .icon-imagen {
+    cursor: pointer; /* Cambiar el cursor al pasar sobre la imagen */
+  }
+  
+  .modal {
+    position: absolute; /* Posiciona la modal en relación al contenedor */
+    top: 100%; /* Muestra debajo de la imagen */
+    left: 50%; /* Centra la ventana modal */
+    transform: translateX(-50%); /* Ajusta el centro de la ventana modal */
+    
+    background: #2b0fc4; /* Fondo blanco */
+    color: white;
+    font-size: 0.6rem;
+    max-width: 15rem;
+    min-width: 15rem;
+    padding: 0px 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10; /* Asegura que esté por encima de otros elementos */
+    line-height: 1.0rem;
+  }
