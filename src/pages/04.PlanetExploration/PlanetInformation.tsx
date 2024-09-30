@@ -6,6 +6,7 @@ import DDModal from '../../components/DDModal';
 import ModalIcon from './ModalIcon';
 import Gota from '../../assets/gota.png'
 import { Link } from 'react-router-dom';
+import useMisionStore from '../../store/store';
 
 function PlanetInformation() {
   const mountRef = useRef<HTMLDivElement>(null);
@@ -57,6 +58,9 @@ function PlanetInformation() {
     });
   }, []);
 
+
+  const { currentExoplanet } = useMisionStore();
+
   return (
     <div>
       <div ref={mountRef} style={{ width: '100vw', height: '100vh', overflow: 'hidden' }} />
@@ -64,7 +68,7 @@ function PlanetInformation() {
         position={{ top: '15%', left: '20%' }}>
             <div className='header-title'>
                 <div className='title'>
-                    Hepler-651 b
+                    {currentExoplanet.name}
                 </div>
                 <div className='sub-title'>
                     A Neptune-like giant planet
@@ -74,10 +78,10 @@ function PlanetInformation() {
         <DDModal 
         position={{ top: '50%', left: '20%' }}>
             <div className=''>
-                <p className='sub-title-2'>Informacion adicional</p>
+                <p className='sub-title-2'>Additional Information</p>
                 <div className='card'>
-                    <p className='white'><span>Descubrimiento: </span>2015</p>
-                    <p className='white'><span>Tipo de Planeta: </span>Similar a Neptuno</p>
+                    <p className='white'><span>Year of Discovery: </span>{currentExoplanet.year}</p>
+                    <p className='white'><span>Planet Type: </span>{currentExoplanet.type}</p>
                     <p className='white'>Kepler-651 b es un exoplaneta similar a Neptuno que orbita una estrella de tipo G. Tiene una masa de 6,21 Tierras, tarda 21,4 días en completar una órbita alrededor de su estrella y se encuentra a 0,1409 UA de su estrella. Su descubrimiento se anunció en 2016.</p>
                 </div>
             </div>
@@ -96,18 +100,18 @@ function PlanetInformation() {
         position={{ top: '50%', left: '80%' }}>
             <div className='rigth'>
                 <div className="grid-container">
-                    <div className="grid-item">Excentri. orbital</div>
-                    <div className="grid-item">Radio orbital</div>
-                    <div className="grid-item">Periodo de orbita</div>
-                    <div className="grid-item bottom-bordered">21.4 días</div>
-                    <div className="grid-item bottom-bordered">0.1451AU</div>
-                    <div className="grid-item bottom-bordered">0.003</div>
+                    <div className="grid-item">Planet Size</div>
+                    <div className="grid-item">Planet Mass</div>
+                    <div className="grid-item">Temperature</div>
+                    <div className="grid-item bottom-bordered">{currentExoplanet.size}</div>
+                    <div className="grid-item bottom-bordered">{currentExoplanet.mass}</div>
+                    <div className="grid-item bottom-bordered">{currentExoplanet.temperature}</div>
                 </div>
                 <div className="grid-container-velocity">
-                    <div className="grid-item">Velocidad de viaje</div>
-                    <div className="grid-item">Tiempo de viaje</div>
-                    <div className="grid-item bottom-bordered">87 millones de millas por hora</div>
-                    <div className="grid-item bottom-bordered">2 mil años</div>
+                    <div className="grid-item">Distance (light years)</div>
+                    <div className="grid-item">Orbit Time</div>
+                    <div className="grid-item bottom-bordered">{currentExoplanet.distance_ligth_years}</div>
+                    <div className="grid-item bottom-bordered">{currentExoplanet.orbit_time}</div>
                 </div>
             </div>
         </DDModal>
@@ -122,8 +126,8 @@ function PlanetInformation() {
         <DDModal 
         position={{ top: '90%', left: '50%' }}>
             <div className='bottom-buttons'>
-                <button>Regresar</button>
-                <button>Siguiente</button>
+                <button>Return to spaceship</button>
+                <button>Next</button>
             </div>
         </DDModal>
     </div>

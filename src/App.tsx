@@ -9,7 +9,8 @@ import PlanetInformation from './pages/04.PlanetExploration/PlanetInformation.js
 import Video from './pages/04.PlanetExploration/Video.js';
 
 function App() {
-  const videoUrl = "https://www.youtube.com/watch?v=yDjgUWWE1IQ";
+  //const videoUrl = "https://www.youtube.com/watch?v=yDjgUWWE1IQ";
+  const videoUrl = "https://www.youtube.com/watch?v=hEdzv7D4CbQ";
   const videoId = videoUrl.split('v=')[1]; // Extrae el ID del video
   const ampersandPosition = videoId.indexOf('&'); // Verifica si hay un "&" en el ID
   // if (ampersandPosition !== -1) {
