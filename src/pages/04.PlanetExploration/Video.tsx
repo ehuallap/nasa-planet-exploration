@@ -1,35 +1,39 @@
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+
 const Video = ({ videoId }) => {
   const iframeRef = useRef(null);
   const navigate = useNavigate();
+
+  // Función para cargar la API de YouTube
+  const loadYouTubeAPI = () => {
+    const script = document.createElement('script');
+    script.src = "https://www.youtube.com/iframe_api";
+    document.body.appendChild(script);
+  };
+
   useEffect(() => {
-    // Hacer que el contenedor del video ocupe toda la pantalla
-    const videoElement = document.getElementById('video-container');
-    if (videoElement.requestFullscreen) {
-      videoElement.requestFullscreen();
-    } else if (videoElement.mozRequestFullScreen) { // Firefox
-      videoElement.mozRequestFullScreen();
-    } else if (videoElement.webkitRequestFullscreen) { // Chrome, Safari, and Opera
-      videoElement.webkitRequestFullscreen();
-    } else if (videoElement.msRequestFullscreen) { // IE/Edge
-      videoElement.msRequestFullscreen();
+    // Cargar la API de YouTube si aún no está disponible
+    if (!window.YT) {
+      loadYouTubeAPI();
+    } else {
+      onYouTubeIframeAPIReady();
     }
-    
-    // Intentar reproducir el video sin silenciar
-    const handleLoad = () => {
+
+    // Llamada cuando la API de YouTube está lista
+    window.onYouTubeIframeAPIReady = () => {
       const iframe = iframeRef.current;
       if (iframe) {
         const player = new window.YT.Player(iframe, {
           events: {
             'onReady': (event) => {
-              console.log("onready ejcutandose")
+              console.log("El video está listo"); // Verificar si onReady se llama
               event.target.unMute(); // Intenta desactivar el silencio
-              event.target.setVolume(80); // Ajusta el volumen al 100%
+              event.target.setVolume(100); // Ajusta el volumen al 100%
             },
             'onStateChange': (event) => {
-              console.log("onstate change ejecutando")
               if (event.data === window.YT.PlayerState.ENDED) {
+                console.log("El video ha terminado"); // Verificar si onStateChange se llama al terminar
                 handleBack(); // Llama a la función handleBack cuando el video termina
               }
             },
@@ -38,16 +42,13 @@ const Video = ({ videoId }) => {
       }
     };
 
-    window.onYouTubeIframeAPIReady = handleLoad; // Espera a que la API de YouTube esté lista
-
     return () => {
       window.onYouTubeIframeAPIReady = null; // Limpia el evento
     };
   }, []);
 
   const handleBack = () => {
-    navigate('/planet-information')
-    //history.goBack(); // Regresa a la ruta anterior
+    navigate('/planet-information'); // Navega a la ruta deseada
   };
 
   return (
@@ -66,7 +67,7 @@ const Video = ({ videoId }) => {
         ref={iframeRef}
         width="100%"
         height="100%"
-        src={`https://www.youtube.com/embed/${videoId}?autoplay=1&volume=1`}
+        src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
         title="YouTube video player"
         frameBorder="0"
         allow="autoplay; encrypted-media"
@@ -98,5 +99,5 @@ const Video = ({ videoId }) => {
     </div>
   );
 };
-  
-  export default Video;
+
+export default Video;
