@@ -1,9 +1,13 @@
 import './LandingPage.css'
 import DDTitle from '../../components/DDTitle';
 import { Link } from 'react-router-dom';
+import DDButton from '../../components/DDButton';
 
 const LandingPage = () => {
 
+    const consoles = ()=>{
+        console.log("Este es de prueba")
+    } 
     return (
         <div className='container'>
             <div className="hero">
@@ -14,7 +18,7 @@ const LandingPage = () => {
                     <p className='description'>Descubre +10,000 exoplanetas en diferentes siustemas solares</p>
                 </div>
                 <div className='button-container'>
-                    <Link to="/mision-description" style={{ textDecoration: 'none' }}><button className="button">EMPIEZA TU VIAJE</button></Link>
+                    <DDButton routeToChange="mision-description" onClick={consoles} className="button">EMPIEZA TU VIAJE</DDButton>
                 </div>
             </div>  
             <div className="content">

@@ -23,8 +23,15 @@ const Video = ({ videoId }) => {
         const player = new window.YT.Player(iframe, {
           events: {
             'onReady': (event) => {
+              console.log("onready ejcutandose")
               event.target.unMute(); // Intenta desactivar el silencio
-              event.target.setVolume(100); // Ajusta el volumen al 100%
+              event.target.setVolume(80); // Ajusta el volumen al 100%
+            },
+            'onStateChange': (event) => {
+              console.log("onstate change ejecutando")
+              if (event.data === window.YT.PlayerState.ENDED) {
+                handleBack(); // Llama a la función handleBack cuando el video termina
+              }
             },
           },
         });
