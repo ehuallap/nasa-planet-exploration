@@ -1,8 +1,7 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import './App.css';
-import earthTextureURL from './assets/earth_texture.jpg';
-
+import earthTextureURL from '../assets/earth_texture.jpg'
 function App() {
   const mountRef = useRef<HTMLDivElement>(null);
 

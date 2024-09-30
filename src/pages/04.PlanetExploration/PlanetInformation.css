@@ -1,0 +1,84 @@
+* {
+    color: rgb(255, 89, 0);
+}
+/*----------------------------------------------*/
+.header-title {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.title{
+    font-size: 2rem;
+
+}
+
+.sub-title{
+    font-size: 1.2rem;
+}
+
+.sub-title{
+    font-size: 1.0rem;
+}
+
+/*-------------------------------------*/
+
+.card {
+    border-radius: 1rem;
+    background-color: orange;
+    color: rgb(255, 255, 255);
+    padding: 1rem;
+    font-size: 0.6rem;
+    min-width: 23rem;
+    max-width: 23rem;
+    line-height: 1.2rem;
+}
+.white {
+    color: white;
+}
+
+/*-------------------------------------*/
+
+.rigth {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas iguales */
+    grid-template-rows: repeat(2, 1fr);    /* Dos filas iguales */
+    gap: 10px; /* Espaciado entre elementos de la rejilla */
+    margin: 0 auto; /* Centrar la rejilla horizontalmente */
+}
+
+.grid-container-velocity {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Tres columnas iguales */
+    grid-template-rows: repeat(2, 1fr);    /* Dos filas iguales */
+    gap: 10px; /* Espaciado entre elementos de la rejilla */
+    margin: 0 auto; /* Centrar la rejilla horizontalmente */
+}
+  
+.grid-item {
+    padding: 10px;
+    text-align: center;
+    background-color: transparent;
+    border: none; /* Sin borde por defecto */
+    font-size: 0.7rem;
+    width: 5rem;
+}
+  
+  .bottom-bordered {
+    color: white;
+    border: 2px solid rgb(150, 150, 150); /* Bordes inferiores */
+  }
+
+
+/*---------------------------------------*/
+.bottom-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 25rem;
+}
