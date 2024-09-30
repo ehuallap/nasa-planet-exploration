@@ -5,6 +5,7 @@ import earthTextureURL from '../../assets/earth_texture.jpg'
 import DDModal from '../../components/DDModal';
 import ModalIcon from './ModalIcon';
 import Gota from '../../assets/gota.png'
+import { Link } from 'react-router-dom';
 
 function PlanetInformation() {
   const mountRef = useRef<HTMLDivElement>(null);
@@ -113,7 +114,9 @@ function PlanetInformation() {
         <DDModal 
         position={{ top: '80%', left: '50%' }}>
             <div className=''>
-                <button>VISITAR EXOPLANETA</button>
+                <Link to="/video" style={{ textDecoration: 'none' }}>
+                    <button>VISITAR EXOPLANETA</button>
+                </Link>
             </div>
         </DDModal>
         <DDModal 
