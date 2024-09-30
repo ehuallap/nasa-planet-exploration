@@ -1,0 +1,40 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+  }
+  
+  /* El contenedor del canvas de Three.js (planeta) ocupará la mitad izquierda */
+  .canvas-container {
+    flex: 1;
+    background-color: black;
+  }
+  
+  /* El contenedor de la Card ocupará la mitad derecha */
+  .info-card {
+    flex: 1;
+    background-color: #f8f9fa;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .info-card h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .info-card p {
+    font-size: 18px;
+    color: #555;
+    margin: 10px 0;
+  }

@@ -1,59 +1,36 @@
-import { useEffect, useRef } from 'react';
-import * as THREE from 'three';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import LandingPage from './pages/01.LandingPage/LandingPage.js';
+import MisionDescription from './pages/02.TravelCustomization/MisionDescription.js'
 import './App.css';
-import earthTextureURL from './assets/earth_texture.jpg';
+import SelectPlanetarySystem from './pages/02.TravelCustomization/SelectPlanetarySystem.js';
+import Loading from './pages/03.Mapping/Loading.js';
+import Mapping from './pages/03.Mapping/Mapping.js';
+import PlanetInformation from './pages/04.PlanetExploration/PlanetInformation.js';
+import Video from './pages/04.PlanetExploration/Video.js';
 
 function App() {
-  const mountRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const mount = mountRef.current!;
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
-
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    mount.appendChild(renderer.domElement);
-
-    const loader = new THREE.TextureLoader();
-    loader.load(earthTextureURL, (texture) => {
-      const geometry = new THREE.SphereGeometry(1, 32, 32);
-      const material = new THREE.MeshBasicMaterial({ map: texture });
-      const sphere = new THREE.Mesh(geometry, material);
-      scene.add(sphere);
-
-      camera.position.z = 5;
-
-      const animate = () => {
-        requestAnimationFrame(animate);
-        sphere.rotation.y += 0.01; // Optional: Rotate the sphere for a simple animation
-        renderer.render(scene, camera);
-      };
-      animate();
-
-      const handleResize = () => {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-      };
-
-      window.addEventListener('resize', handleResize);
-
-      return () => {
-        window.removeEventListener('resize', handleResize);
-
-        // Dispose of the Three.js objects
-        scene.clear();
-        renderer.dispose();
-        const canvas = renderer.domElement;
-        if (canvas && mount.contains(canvas)) {
-          mount.removeChild(canvas);
-        }
-      };
-    });
-  }, []);
-
-  return <div ref={mountRef} style={{ width: '100vw', height: '100vh', overflow: 'hidden' }} />;
+  const videoUrl = "https://www.youtube.com/watch?v=yDjgUWWE1IQ";
+  const videoId = videoUrl.split('v=')[1]; // Extrae el ID del video
+  const ampersandPosition = videoId.indexOf('&'); // Verifica si hay un "&" en el ID
+  // if (ampersandPosition !== -1) {
+  //   videoId = videoId.substring(0, ampersandPosition); // Si hay un "&", corta el ID hasta esa posición
+  // }
+  return (
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/mision-description" element={<MisionDescription />} />
+          <Route path="/select-planetary-system" element={<SelectPlanetarySystem />} />
+          <Route path="/personalization" element={<MisionDescription />} />
+          <Route path="/loading" element={<Loading />} />
+          <Route path="/mapping" element={<Mapping />} />
+          <Route path="/planet-information" element={<PlanetInformation />} />
+          <Route path="/video" element={<Video videoId={videoId}/>} />
+        </Routes>
+      </div>
+    </Router>
+  );
 }
 
 export default App;

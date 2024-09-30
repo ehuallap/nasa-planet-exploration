@@ -1,0 +1,30 @@
+@font-face {
+    font-family: 'Cubest';
+    src: url('../src/assets/fonts/Cubest-Medium.otf') format('opentype'); /* For .otf files */
+    font-weight: normal;
+    font-style: normal;
+}
+
+body, button, input, textarea {
+    font-family: 'Cubest', sans-serif; /* Aplicar la fuente Cubest a todos los elementos */
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+button {
+    background-color: #dc1d1d;
+    border-radius: 1rem;
+    text-decoration: none;
+    border: 3px solid #ffffff;
+    color: #ffffff;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+}
+
+button :hover {
+    cursor: pointer;
+}
