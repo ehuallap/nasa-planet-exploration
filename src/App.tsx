@@ -6,8 +6,15 @@ import SelectPlanetarySystem from './pages/02.TravelCustomization/SelectPlanetar
 import Loading from './pages/03.Mapping/Loading.js';
 import Mapping from './pages/03.Mapping/Mapping.js';
 import PlanetInformation from './pages/04.PlanetExploration/PlanetInformation.js';
+import Video from './pages/04.PlanetExploration/Video.js';
 
 function App() {
+  const videoUrl = "https://www.youtube.com/watch?v=yDjgUWWE1IQ";
+  const videoId = videoUrl.split('v=')[1]; // Extrae el ID del video
+  const ampersandPosition = videoId.indexOf('&'); // Verifica si hay un "&" en el ID
+  // if (ampersandPosition !== -1) {
+  //   videoId = videoId.substring(0, ampersandPosition); // Si hay un "&", corta el ID hasta esa posición
+  // }
   return (
     <Router>
       <div className="App">
@@ -19,6 +26,7 @@ function App() {
           <Route path="/loading" element={<Loading />} />
           <Route path="/mapping" element={<Mapping />} />
           <Route path="/planet-information" element={<PlanetInformation />} />
+          <Route path="/video" element={<Video videoId={videoId}/>} />
         </Routes>
       </div>
     </Router>
