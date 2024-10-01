@@ -1,0 +1,59 @@
+.carousel-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Altura completa de la ventana */
+    position: relative;
+    background-color: #f0f0f0; /* Color de fondo opcional */
+  }
+  
+  .carousel-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80vw; /* Ancho del carrusel */
+    height: 70vh; /* Altura del carrusel */
+    overflow: hidden; /* Oculta la imagen que sobresale */
+  }
+  
+  .carousel-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover; /* Ajusta la imagen para que ocupe el espacio */
+  }
+  
+  .carousel-button {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: white; /* Color del botón */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+  }
+  
+  .left {
+    left: 10px; /* Espaciado a la izquierda */
+  }
+  
+  .right {
+    right: 10px; /* Espaciado a la derecha */
+  }
+  
+  .select-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #007bff; /* Color del botón */
+    color: white; /* Color del texto */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .select-button:hover {
+    background-color: #0056b3; /* Color al pasar el mouse */
+  }
