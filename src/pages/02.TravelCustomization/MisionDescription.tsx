@@ -6,7 +6,7 @@ import DDTitle from "../../components/DDTitle";
 import useMisionStore from "../../store/store";
 const MisionDescription = () => {
 
-    const [name, setName] = useState("");
+    const [name, setNameLocal] = useState("");
 
     let [text1, setText1] = useState(true);
     let [text2, setText2] = useState(false);
@@ -20,9 +20,13 @@ const MisionDescription = () => {
     }, 10000);
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setName(event.target.value);
+        setNameLocal(event.target.value);
       };
-    useMisionStore();
+
+    const { setName } = useMisionStore();
+    const addNameToStore = () => {
+        setName(name);
+    }
 
     return (
         <div className='container-mision'>
@@ -31,7 +35,7 @@ const MisionDescription = () => {
                 { text2 && <DDTitle text="You are going to be part of the most wonderful adventure, your are going to be the traveler of the future" fontSize='30px' color='white'></DDTitle>}
                 { text3 && <DDTitle text="Enter your name: " fontSize='30px' color='white'></DDTitle>}
                 <input type="text" className="input" onChange={handleInputChange}></input>
-                { name.length > 0 ? (<Link to="/select-planetary-system" style={{ textDecoration: 'none' }}><button className="button">Next</button></Link>)
+                { name.length > 0 ? (<Link to="/select-planetary-system" style={{ textDecoration: 'none' }} onClick={addNameToStore}><button className="button">Next</button></Link>)
                     : (<span style={{ textDecoration: 'none'}}><button className="button" disabled>Next</button></span>)    
             }
 
