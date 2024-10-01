@@ -7,6 +7,7 @@ import ModalIcon from './ModalIcon';
 import Gota from '../../assets/gota.png'
 import { Link } from 'react-router-dom';
 import useMisionStore from '../../store/store';
+import DDButton from '../../components/DDButton';
 
 function PlanetInformation() {
   const mountRef = useRef<HTMLDivElement>(null);
@@ -59,7 +60,13 @@ function PlanetInformation() {
   }, []);
 
 
-  const { currentExoplanet } = useMisionStore();
+  const { currentExoplanet, indexExoplanet, nextCurrentExoplanet } = useMisionStore();
+
+  const nextExoplanet  = () => {
+    console.log("index ", indexExoplanet)
+    nextCurrentExoplanet()
+    console.log("index ", indexExoplanet)
+  }
 
   return (
     <div>
@@ -126,8 +133,8 @@ function PlanetInformation() {
         <DDModal 
         position={{ top: '90%', left: '50%' }}>
             <div className='bottom-buttons'>
-                <button>Return to spaceship</button>
-                <button>Next</button>
+                <DDButton href="/mapping">Return to spaceship</DDButton>
+                <button onClick={nextExoplanet}>Next</button>
             </div>
         </DDModal>
     </div>
