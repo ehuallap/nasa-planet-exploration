@@ -22,7 +22,6 @@ const MisionDescription = () => {
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setName(event.target.value);
       };
-    useMisionStore();
 
     return (
         <div className='container-mision'>
