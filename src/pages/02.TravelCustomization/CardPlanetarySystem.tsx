@@ -4,16 +4,20 @@ import './CardPlanetarysystem.css'
 import { useNavigate } from 'react-router-dom';
 
 import HoverAudio from '../../assets/sounds/navigation-digital-pop-up.wav'
+import ClickAudio from '../../assets/sounds/navigation-digital-menu-click.wav'
 
 const CardPlanetarySystem = ({clas, text}) => {
+  const audio = new Audio(HoverAudio);
+  const audioClick = new Audio(ClickAudio);
     const { planetarySystem, setPlanetarySystem } = useMisionStore();
     const navigate = useNavigate();
     const changePlanetarySystem = ( option : string) => {
+        audioClick.play()
         const filtered = exoplanetsData.filter((item) => item.solar_system === option)
         setPlanetarySystem("Planetary System : " + option, filtered);
         navigate("/select-spaceship")
     }
-    const audio = new Audio(HoverAudio);
+
 
     const handleMouseEnter = () => {
         audio.play();  // Reproduce el audio
