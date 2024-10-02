@@ -1,6 +1,6 @@
 import useMisionStore from '../../store/store';
 import exoplanetsData from '../../data/exoplanets.json'
-import './CardPlanetarysystem.css'
+import './CardPlanetarySystem.css'
 import { useNavigate } from 'react-router-dom';
 
 import HoverAudio from '../../assets/sounds/navigation-digital-pop-up.wav'
