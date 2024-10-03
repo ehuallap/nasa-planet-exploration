@@ -1,13 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
-declare global {
-  interface Window {
-    YT: any;
-    onYouTubeIframeAPIReady: any;
-  }
-}
-
 const Video = ({ videoId }) => {
   const iframeRef = useRef(null);
   const navigate = useNavigate();
@@ -24,7 +17,7 @@ const Video = ({ videoId }) => {
     if (!window.YT) {
       loadYouTubeAPI();
     } else {
-      window.onYouTubeIframeAPIReady();
+      onYouTubeIframeAPIReady();
     }
 
     // Llamada cuando la API de YouTube está lista

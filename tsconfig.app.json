@@ -8,21 +8,17 @@
 
     /* Bundler mode */
     "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "moduleDetection": "force",
-    "noEmit": true, // Permitir la emisión
-    "allowImportingTsExtensions": true, // Añadir esta línea
-    
-    /* JSX */
+    "noEmit": true,
     "jsx": "react-jsx",
 
     /* Linting */
-    "strict": false,  // Relajar las reglas
-    "noUnusedLocals": false,  // Permitir variables no usadas
-    "noUnusedParameters": false,  // Permitir parámetros no usados
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitAny": false,
-    "noEmitOnError": false
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true
   },
   "include": ["src"]
 }
