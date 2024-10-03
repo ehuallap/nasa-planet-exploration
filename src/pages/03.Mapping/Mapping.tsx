@@ -11,11 +11,19 @@ const Mapping = () => {
     return (
         <div className='container-mapping'>
             <div className='exoplanets-mapping'>
-            {
-                planetarySystem.exoplanets.map((exoplanet, index)=>{
-                    return <DDButton href="/planet-information" onClick={()=>changeExoplanet(index)}>{exoplanet.name} </DDButton>
-                })
-            }
+                {
+                    planetarySystem.exoplanets.map((exoplanet, index) => {
+                        return (
+                            <DDButton 
+                                href="/planet-information" 
+                                onClick={() => changeExoplanet(index)} 
+                                className="btn-class"
+                            >
+                                {exoplanet.name}
+                            </DDButton>
+                        );
+                    })
+                }
             </div>
         </div>
     );

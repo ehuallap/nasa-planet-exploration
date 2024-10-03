@@ -39,9 +39,13 @@ const SelectSpaceship = () => {
     const carouselRef = useRef();
     const {setSpaceship} = useMisionStore()
     const handleSelectClick = () => {
-      const currentIndex = carouselRef.current.state.currentSlide;
-      setSpaceship(currentIndex)
-      console.log('Índice de la imagen actual:', currentIndex);
+      if (carouselRef.current) {
+        const currentIndex = carouselRef.current;
+        setSpaceship(currentIndex);
+        console.log('Índice de la imagen actual:', currentIndex);
+    } else {
+        console.warn('carouselRef.current es undefined');
+    }
     };
 
     return (
@@ -58,7 +62,13 @@ const SelectSpaceship = () => {
               ))}
               </Carousel>
               <div className="bottom">
-                <DDButton href="/mapping" onClick={handleSelectClick}>Select</DDButton>
+                  <DDButton 
+                      href="/mapping" 
+                      onClick={handleSelectClick} 
+                      className="btn-class" // Asegúrate de usar la clase adecuada
+                  >
+                      Select
+                  </DDButton>
               </div>
           </div>
         </CustomBackground>
