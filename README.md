@@ -58,8 +58,5 @@ Las contribuciones son bienvenidas. Si deseas contribuir, sigue estos pasos:
 3. Realiza tus cambios y haz un commit (`git commit -m 'Añadir nueva funcionalidad'`).
 4. Envía un pull request.
 
-## Licencia
-Este proyecto está bajo la licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
-
 ## Contacto
-Para preguntas o comentarios, puedes contactarme a través de [tuemail@ejemplo.com](mailto:tuemail@ejemplo.com).
+Para preguntas o comentarios, puedes contactarme a través de [Erick Hualla](mailto:ehuallap@unsa.edu.pe), [John Sanchez](mailto:jsanchezchi@unsa.edu.pe).
