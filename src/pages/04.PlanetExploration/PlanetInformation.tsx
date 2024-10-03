@@ -8,7 +8,7 @@ import Gota from '../../assets/gota.png'
 import { Link } from 'react-router-dom';
 import useMisionStore from '../../store/store';
 import DDButton from '../../components/DDButton';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import cloudTexture from '../../assets/textures/cloud-centauri-b.jpg'; // Importar la textura de nubes
 
 function PlanetInformation() {
@@ -186,9 +186,11 @@ function PlanetInformation() {
             </div>
         </DDModal>
         <DDModal 
-        position={{ top: '90%', left: '50%' }}>
+            position={{ top: '90%', left: '50%' }}>
             <div className='bottom-buttons'>
-                <DDButton href="/mapping">Return to spaceship</DDButton>
+                <DDButton href="/mapping" onClick={() => {}} className="btn-class">
+                    Return to spaceship
+                </DDButton>
                 <button onClick={nextExoplanet}>Next</button>
             </div>
         </DDModal>
