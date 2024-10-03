@@ -7,6 +7,7 @@ import Loading from './pages/03.Mapping/Loading.js';
 import Mapping from './pages/03.Mapping/Mapping.js';
 import PlanetInformation from './pages/04.PlanetExploration/PlanetInformation.js';
 import Video from './pages/04.PlanetExploration/Video.js';
+import SelectSpaceship from './pages/02.TravelCustomization/SelectSpaceship.js';
 
 function App() {
   //const videoUrl = "https://www.youtube.com/watch?v=yDjgUWWE1IQ";
@@ -23,7 +24,7 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/mision-description" element={<MisionDescription />} />
           <Route path="/select-planetary-system" element={<SelectPlanetarySystem />} />
-          <Route path="/personalization" element={<MisionDescription />} />
+          <Route path="/select-spaceship" element={<SelectSpaceship />} />
           <Route path="/loading" element={<Loading />} />
           <Route path="/mapping" element={<Mapping />} />
           <Route path="/planet-information" element={<PlanetInformation />} />

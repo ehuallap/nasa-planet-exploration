@@ -1,13 +1,13 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useRef } from "react";
-import ButtonAudio from '../assets/sounds/navigation-digital-menu-click.wav'
+import ButtonAudio from '../assets/sounds/navigation-digital-menu-click.wav';
 import { useNavigate } from "react-router-dom";
-
-const DDButton = ({ href, onClick, className, children,  }) => {
+const DDButton = ({ href, onClick, className, children, }) => {
     const audioRef = useRef(null);
     const navigate = useNavigate();
     const handleClick = () => {
-        if(onClick){
-            onClick()
+        if (onClick) {
+            onClick();
         }
         if (audioRef.current) {
             audioRef.current.currentTime = 0; // Reinicia el audio
@@ -15,13 +15,11 @@ const DDButton = ({ href, onClick, className, children,  }) => {
         }
         if (href) {
             setTimeout(() => {
-            //navigate("/mision-description"); // Cambia de ruta
-            navigate(href); // Cambia de ruta
+                //navigate("/mision-description"); // Cambia de ruta
+                navigate(href); // Cambia de ruta
             }, 800);
         }
     };
-  
-
     const buttonStyle = {
         position: 'absolute',
         top: top || '50%',
@@ -30,21 +28,7 @@ const DDButton = ({ href, onClick, className, children,  }) => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-      };
-
-    return (
-      <div>
-        <button onClick={handleClick} className={className}>
-          {children}
-        </button>
-  
-        {/* Elemento de audio oculto */}
-        <audio ref={audioRef}>
-          <source src={ButtonAudio} type="audio/mpeg" />
-          Tu navegador no soporta el elemento de audio.
-        </audio>
-      </div>
-    );
-  };
-  
-  export default DDButton;
+    };
+    return (_jsxs("div", { children: [_jsx("button", { onClick: handleClick, className: className, children: children }), _jsxs("audio", { ref: audioRef, children: [_jsx("source", { src: ButtonAudio, type: "audio/mpeg" }), "Tu navegador no soporta el elemento de audio."] })] }));
+};
+export default DDButton;
