@@ -1,50 +1,65 @@
-# React + TypeScript + Vite
+# Descubre Más Allá
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descripción
+**Descubre Más Allá** es una aplicación innovadora que te permite viajar y explorar más de 10,000 exoplanetas en diferentes sistemas solares. Sumérgete en el fascinante mundo de la astronomía y descubre la diversidad de mundos más allá de nuestro propio sistema solar.
 
-Currently, two official plugins are available:
+## Características
+- **Exploración de Exoplanetas**: Accede a una base de datos de más de 10,000 exoplanetas.
+- **Sistemas Solares Diversos**: Viaja a través de diferentes sistemas solares y conoce sus características.
+- **Interfaz Intuitiva**: Navega fácilmente por la aplicación con una interfaz de usuario amigable.
+- **Información Detallada**: Obtén información sobre cada exoplaneta, incluyendo su tamaño, composición y órbita.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Capturas de Pantalla
+![Captura de pantalla 1](images/captura1.png)
+![Captura de pantalla 2](images/captura2.png)
 
-## Expanding the ESLint configuration
+## Tecnologías Utilizadas
+- **Frontend**: React, Vite
+- **Backend**: Node.js, Express
+- **Base de Datos**: PostgreSQL
+- **Despliegue**: Netlify
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Instalación
 
-- Configure the top-level `parserOptions` property like this:
+Para clonar y ejecutar esta aplicación en tu máquina local, sigue estos pasos:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/ehuallap/nasa-planet-exploration.git
+   ```
+   
+2. Navega al directorio del proyecto:
+   ```bash
+   cd nasa-planet-exploration
+   ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+3. Instala las dependencias:
+   ```bash
+   npm install
+   ```
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+4. Inicia la aplicación:
+   ```bash
+   npm run dev
+   ```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Uso
+Accede a la aplicación en tu navegador web y comienza a explorar nuevos exoplanetas. Utiliza la barra de búsqueda para encontrar exoplanetas específicos o navega por los sistemas solares disponibles.
+
+## Despliegue
+Puedes acceder a la aplicación desplegada en el siguiente enlace:
+[Visita la aplicación en Netlify](https://fantastic-custard-6fb545.netlify.app)
+
+## Contribución
+Las contribuciones son bienvenidas. Si deseas contribuir, sigue estos pasos:
+
+1. Haz un fork del proyecto.
+2. Crea una nueva rama (`git checkout -b feature/nueva-funcionalidad`).
+3. Realiza tus cambios y haz un commit (`git commit -m 'Añadir nueva funcionalidad'`).
+4. Envía un pull request.
+
+## Licencia
+Este proyecto está bajo la licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
+
+## Contacto
+Para preguntas o comentarios, puedes contactarme a través de [tuemail@ejemplo.com](mailto:tuemail@ejemplo.com).
