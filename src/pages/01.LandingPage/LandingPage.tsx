@@ -12,7 +12,7 @@ const LandingPage = () => {
         <div className='container'>
             <div className="hero">
                 <div className='hero-content'>
-                    <h2 className='slogan'>DESCUBRE MAS ALLA</h2>
+                    <h2 className='slogan'>DESCUBRE MAS ALLA de tus horizontes</h2>
                     {/* <h1 className='title'>VIAJA Y DESCUBRE NUEVOS EXOPLANETAS</h1> */}
                     <DDTitle text='VIAJA Y DESCUBRE NUEVOS EXOPLANETAS' fontSize='80px' color='white'></DDTitle>
                     <p className='description'>Descubre +10,000 exoplanetas en diferentes siustemas solares</p>
