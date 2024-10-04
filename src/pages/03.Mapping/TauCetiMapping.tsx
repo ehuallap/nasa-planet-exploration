@@ -7,18 +7,14 @@ import CentauriA from '../../assets/exoplanets/centauri-a.jpg'
 import CentauriB from '../../assets/exoplanets/centauri-b.png'
 import CentauriC from '../../assets/exoplanets/centauri-c.png'
 import CentauriD from '../../assets/exoplanets/centauri-d.png'
-import { useNavigate } from 'react-router-dom';
 
 
 
-const Mapping = () => {
+const TauCetiMapping = () => {
     const { planetarySystem, currentExoplanet, setCurrentExoplanet } = useMisionStore();
-
-    const navigate = useNavigate();
     const changeExoplanet = ( option : Number) => {
         console.log("anuevo exoplanet : " + option)
         setCurrentExoplanet(option);
-        setTimeout(() => navigate("/planet-information"), 800);
     }
 
     return (
@@ -32,28 +28,29 @@ const Mapping = () => {
                 src={CentauriB}
                 alt="Clickable Image 1"
                 className="clickable-image"
-                style={{ top: '50%', left: '50%', width: '8%', height: '16%', zIndex: 2  }}
-                onClick={() => changeExoplanet(0)}
+                style={{ top: '50%', left: '50%', width: '8%', height: '16%', zIndex: 1  }}
+                onClick={() => alert("Image 1 clicked")}
             />
             <img
                 src={CentauriC}
                 alt="Clickable Image 2"
                 className="clickable-image"
-                style={{ top: '50%', left: '0%', width: '50%', height: '50%', zIndex: 2 }}
-                onClick={() => changeExoplanet(1)}
+                style={{ top: '50%', left: '0%', width: '50%', height: '50%', zIndex: 1 }}
+                onClick={() => alert("Image 2 clicked")}
             />
             <img
                 src={CentauriD}
                 alt="Clickable Image 2"
                 className="clickable-image"
-                style={{ top: '20%', left: '25%', width: '6%', height: '12%', zIndex: 2 }}
-                onClick={() => changeExoplanet(2)}
+                style={{ top: '20%', left: '25%', width: '6%', height: '12%', zIndex: 1 }}
+                onClick={() => alert("Image 2 clicked")}
             />
             <img
                 src={CentauriA}
                 alt="Clickable Image 2"
                 className="clickable-image"
                 style={{ top: '0%', left: '-20%', width: '100%', height: '100%', zIndex: 0 }}
+                onClick={() => alert("Image 2 clicked")}
             />
             <div className='exoplanets-mapping'>
             {
@@ -66,4 +63,4 @@ const Mapping = () => {
     );
 }
  
-export default Mapping;
+export default TauCetiMapping;
