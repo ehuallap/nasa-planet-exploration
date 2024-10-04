@@ -48,7 +48,7 @@ Accede a la aplicación en tu navegador web y comienza a explorar nuevos exoplan
 
 ## Despliegue
 Puedes acceder a la aplicación desplegada en el siguiente enlace:
-[Visita la aplicación en Netlify](https://66fffd8f8e073d000833b7ac--fantastic-custard-6fb545.netlify.app)
+[Visita la aplicación en Netlify](https://fantastic-custard-6fb545.netlify.app)
 
 ## Contribución
 Las contribuciones son bienvenidas. Si deseas contribuir, sigue estos pasos:
