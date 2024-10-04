@@ -44,6 +44,8 @@ const SelectSpaceship = () => {
       console.log('Índice de la imagen actual:', currentIndex);
     };
 
+    const { planetarySystem } = useMisionStore();
+
     return (
           <CustomBackground>
             <div>
@@ -58,7 +60,7 @@ const SelectSpaceship = () => {
               ))}
               </Carousel>
               <div className="bottom">
-                <DDButton href="/mapping" onClick={handleSelectClick}>Select</DDButton>
+                <DDButton href={`/mapping/${planetarySystem.name}`} onClick={handleSelectClick}>Select</DDButton>
               </div>
           </div>
         </CustomBackground>

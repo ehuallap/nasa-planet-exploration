@@ -5,6 +5,7 @@ import './App.css';
 import SelectPlanetarySystem from './pages/02.TravelCustomization/SelectPlanetarySystem.js';
 import Loading from './pages/03.Mapping/Loading.js';
 import Mapping from './pages/03.Mapping/Mapping.js';
+import TauCetiMapping from './pages/03.Mapping/TauCetiMapping.js';
 import PlanetInformation from './pages/04.PlanetExploration/PlanetInformation.js';
 import Video from './pages/04.PlanetExploration/Video.js';
 import SelectSpaceship from './pages/02.TravelCustomization/SelectSpaceship.js';
@@ -26,7 +27,8 @@ function App() {
           <Route path="/select-planetary-system" element={<SelectPlanetarySystem />} />
           <Route path="/select-spaceship" element={<SelectSpaceship />} />
           <Route path="/loading" element={<Loading />} />
-          <Route path="/mapping" element={<Mapping />} />
+          <Route path="/mapping/alpha-centauri" element={<Mapping />} />
+          <Route path="/mapping/tau-ceti" element={<TauCetiMapping />} />
           <Route path="/planet-information" element={<PlanetInformation />} />
           <Route path="/video" element={<Video videoId={videoId}/>} />
         </Routes>
