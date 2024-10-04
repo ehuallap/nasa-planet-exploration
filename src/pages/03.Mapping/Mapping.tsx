@@ -39,7 +39,7 @@ const Mapping = () => {
                 src={CentauriC}
                 alt="Clickable Image 2"
                 className="clickable-image"
-                style={{ top: '50%', left: '0%', width: '50%', height: '50%', zIndex: 2 }}
+                style={{ top: '50%', left: '5%', width: '40%', height: '40%', zIndex: 2 }}
                 onClick={() => changeExoplanet(1)}
             />
             <img
