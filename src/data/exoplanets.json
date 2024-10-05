@@ -2,6 +2,7 @@
     {
         "id": 0,
         "name": "Proxima Centauri b",
+        "subtitle": "",
         "solar_system": "Alpha Centauri",
         "year": "2016",
         "distance_ligth_years": "4.2",
@@ -11,12 +12,27 @@
         "orbit_time": "11 days aprox.",
         "habitable" : "no",
         "temperature": "-39°C",
-        "url_asset_texture":"",
-        "url_video":""
+        "description": "Planeta rocoso y frío bañado en luz roja, ubicada en zona habitable. Con una atmosfera misteriosa y con indicios de agua sólida en su superficie. Con posibilidades de paisajes montañosos cubiertos de minerales exóticos.",
+        "url_asset_texture":"centauri-b.png",
+        "url_video":"",
+        "icons" : [
+            {
+                "title" : "Rocks",
+                "icon" : "rock.png",
+                "description" : "A cold, rocky planet bathed in red light, located in a habitable zone."
+            },
+            {
+                "title" : "Atmosphere",
+                "icon" : "atmosphere.png",
+                "description" : "The exoplanet presents a misteryous atmosphere"
+            }
+        ]
+            
     },
     {
         "id": 1,
         "name": "Proxima Centauri c",
+        "subtitle": "",
         "solar_system": "Alpha Centauri",
         "year": "2020",
         "distance_ligth_years": "4.24",
@@ -26,12 +42,26 @@
         "orbit_time": "5.2 years",
         "habitable" : "no",
         "temperature": "-234°C",
-        "url_asset_texture":"",
-        "url_video":""
+        "description": "",
+        "url_asset_texture":"centauri-c.jpg",
+        "url_video":"",
+        "icons" : [
+            {
+                "title" : "Rocks",
+                "icon" : "rock.png",
+                "description" : "A rocky, icy planet orbiting far from its star, making it a barren, frozen planet"
+            },
+            {
+                "title" : "Ice",
+                "icon" : "freeze.png",
+                "description" : "The planet has ice-covered mountains but no traces of liquid water"
+            }
+        ]
     },
     {
         "id": 2,
         "name": "Proxima Centauri d",
+        "subtitle": "",
         "solar_system": "Alpha Centauri",
         "year": "2022",
         "distance_ligth_years": "4.24",
@@ -41,12 +71,26 @@
         "orbit_time": "5 days aprox.",
         "habitable" : "no",
         "temperature": "-40°C",
-        "url_asset_texture":"",
-        "url_video":""
+        "description": "",
+        "url_asset_texture":"centauri-d.avif",
+        "url_video":"",
+        "icons" : [
+            {
+                "title" : "Rocks",
+                "icon" : "rock.png",
+                "description" : "A small, cold, rocky planet located beyond the habitable zone of its star"
+            },
+            {
+                "title" : "Wind",
+                "icon" : "wind.png",
+                "description" : "The wind is constant due to the lack of a dense atmosphere"
+            }
+        ]
     },
     {
         "id": 3,
         "name": "Tau Ceti g",
+        "subtitle": "",
         "solar_system": "Tau Ceti",
         "year": "2017",
         "distance_ligth_years": "11.7",
@@ -56,12 +100,14 @@
         "orbit_time": "5.2 years aprox.",
         "habitable" : "yes",
         "temperature": "-",
-        "url_asset_texture":"",
+        "description": "",
+        "url_asset_texture":"tau-ceti-g.avif",
         "url_video":""
     },
     {
         "id": 4,
         "name": "Tau Ceti h",
+        "subtitle": "",
         "solar_system": "Tau Ceti",
         "year": "2017",
         "distance_ligth_years": "11.7",
@@ -71,12 +117,14 @@
         "orbit_time": "49.4 days aprox.",
         "habitable" : "no",
         "temperature": "-",
+        "description": "",
         "url_asset_texture":"",
         "url_video":""
     },
     {
         "id": 5,
         "name": "Tau Ceti e",
+        "subtitle": "",
         "solar_system": "Tau Ceti",
         "year": "2017",
         "distance_ligth_years": "11.7",
@@ -86,12 +134,14 @@
         "orbit_time": "163 days",
         "habitable" : "yes",
         "temperature": "68°C",
+        "description": "",
         "url_asset_texture":"",
         "url_video":""
     },
     {
         "id": 6,
         "name": "Tau Ceti f",
+        "subtitle": "",
         "solar_system": "Tau Ceti",
         "year": "2017",
         "distance_ligth_years": "11.7",
@@ -101,12 +151,14 @@
         "orbit_time": "640 days",
         "habitable" : "yes",
         "temperature": "-20°C to 20°C",
+        "description": "",
         "url_asset_texture":"",
         "url_video":""
     },
     {
         "id": 7,
         "name": "Gliese 1061 b",
+        "subtitle": "",
         "solar_system": "Gliese 1061",
         "year": "2019",
         "distance_ligth_years": "12",
@@ -116,12 +168,14 @@
         "orbit_time": "6.7 days",
         "habitable" : "no",
         "temperature": "19°C",
-        "url_asset_texture":"",
+        "description": "",
+        "url_asset_texture":"gliese-1061-b.avif",
         "url_video":""
     },
     {
         "id": 8,
         "name": "Gliese 1061 c",
+        "subtitle": "",
         "solar_system": "Gliese 1061",
         "year": "2019",
         "distance_ligth_years": "12",
@@ -131,12 +185,14 @@
         "orbit_time": "13 days",
         "habitable" : "no",
         "temperature": "31°C",
-        "url_asset_texture":"",
+        "description": "",
+        "url_asset_texture":"gliese-1061-c.jpg",
         "url_video":""
     },
     {
         "id": 9,
         "name": "Gliese 1061 d",
+        "subtitle": "",
         "solar_system": "Gliese 1061",
         "year": "2019",
         "distance_ligth_years": "12",
@@ -146,12 +202,14 @@
         "orbit_time": "22.7 days",
         "habitable" : "yes",
         "temperature": "13°C",
-        "url_asset_texture":"",
+        "description": "",
+        "url_asset_texture":"gliese-1061-d.avif",
         "url_video":""
     },
     {
         "id": 10,
         "name": "YZ Ceti b",
+        "subtitle": "",
         "solar_system": "YZ Ceti",
         "year": "2017",
         "distance_ligth_years": "12.1",
@@ -161,12 +219,14 @@
         "orbit_time": "1.21 days",
         "habitable" : "probably",
         "temperature": "-",
+        "description": "",
         "url_asset_texture":"",
         "url_video":""
     },
     {
         "id": 11,
         "name": "YZ Ceti c",
+        "subtitle": "",
         "solar_system": "YZ Ceti",
         "year": "2017",
         "distance_ligth_years": "12.1",
@@ -176,11 +236,13 @@
         "orbit_time": "2 days",
         "habitable" : "no",
         "temperature": "-",
+        "description": "",
         "url_asset_texture":"",
         "url_video":""
     },{
         "id": 12,
         "name": "YZ Ceti d",
+        "subtitle": "",
         "solar_system": "YZ Ceti",
         "year": "2017",
         "distance_ligth_years": "12.1",
@@ -190,6 +252,7 @@
         "orbit_time": "4.7 days",
         "habitable" : "no",
         "temperature": "-",
+        "description": "",
         "url_asset_texture":"",
         "url_video":""
     }    

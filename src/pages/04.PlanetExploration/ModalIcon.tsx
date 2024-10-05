@@ -3,11 +3,11 @@ import './ModalIcon.css'; // Importar estilos
 
 const ModalIcon = ({ imagen, texto, title="", tamaño = '60px' }) => {
   const [hover, setHover] = useState(false);
-
+  const url_icon = new URL("../../assets/icons/" + imagen, import.meta.url).href
   return (
     <div className="icon-container">
       <img
-        src={imagen}
+        src={url_icon}
         alt="Imagen"
         style={{ width: tamaño, height: tamaño }}
         className="icon-imagen"

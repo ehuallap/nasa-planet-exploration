@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import './PlanetInformation.css';
 import earthTextureURL from '../../assets/textures/centauri-b-2.png'
@@ -10,10 +10,24 @@ import useMisionStore from '../../store/store';
 import DDButton from '../../components/DDButton';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import cloudTexture from '../../assets/textures/cloud-centauri-b.jpg'; // Importar la textura de nubes
+import PlanetAudio  from '../../assets/sounds/space-planet.mp3'
+import BackgroundAudio from '../../components/BackgroundAudio';
+import SelectSpacesuit from '../03.Mapping/SelectSpacesuit';
+
+import SpaceSuit1 from '../../assets/spacesuits/spacesuit-helado-rocoso-sin-atmosfera.png'
 
 function PlanetInformation() {
   const mountRef = useRef<HTMLDivElement>(null);
-
+  
+  const { currentExoplanet, indexExoplanet, nextCurrentExoplanet } = useMisionStore();
+  const [isOpen, setIsOpen] = useState(false);
+  const nextExoplanet  = () => {
+    console.log("index ", indexExoplanet)
+    nextCurrentExoplanet()
+    console.log("index ", indexExoplanet)
+  }
+  const url_texture = new URL("../../assets/textures/" + currentExoplanet.url_asset_texture, import.meta.url).href
+  console.log("texture", url_texture)
   useEffect(() => {
     const mount = mountRef.current;
     const scene = new THREE.Scene();
@@ -42,7 +56,7 @@ function PlanetInformation() {
     const loader = new THREE.TextureLoader();
     
     // Cargar textura de la Tierra
-    loader.load(earthTextureURL, (earthTexture) => {
+    loader.load(url_texture, (earthTexture) => {
       const geometry = new THREE.SphereGeometry(1, 64, 64);
 
       // Material para el planeta
@@ -114,18 +128,20 @@ function PlanetInformation() {
 
   }, []);
 
-
-  const { currentExoplanet, indexExoplanet, nextCurrentExoplanet } = useMisionStore();
-
-  const nextExoplanet  = () => {
-    console.log("index ", indexExoplanet)
-    nextCurrentExoplanet()
-    console.log("index ", indexExoplanet)
-  }
+  const positions = [
+    { top: "42%", left: "42%" },
+    { top: "42%", left: "58%" },
+    { top: "36%", left: "50%" },
+    { top: "58%", left: "42%" },
+    { top: "58%", left: "58%" },
+    { top: "64%", left: "50%" }
+  ]
+  
 
   return (
     <div>
       <div ref={mountRef} style={{ width: '100vw', height: '100vh', overflow: 'hidden' }} />
+        <BackgroundAudio href={PlanetAudio}></BackgroundAudio>
         <DDModal 
         position={{ top: '15%', left: '20%' }}>
             <div className='header-title'>
@@ -133,7 +149,7 @@ function PlanetInformation() {
                     {currentExoplanet.name}
                 </div>
                 <div className='sub-title'>
-                    A Neptune-like giant planet
+                    {currentExoplanet.subtitle}
                 </div>
             </div>
         </DDModal>
@@ -144,20 +160,27 @@ function PlanetInformation() {
                 <div className='card'>
                     <p className='white'><span>Year of Discovery: </span>{currentExoplanet.year}</p>
                     <p className='white'><span>Planet Type: </span>{currentExoplanet.type}</p>
-                    <p className='white'>Kepler-651 b es un exoplaneta similar a Neptuno que orbita una estrella de tipo G. Tiene una masa de 6,21 Tierras, tarda 21,4 días en completar una órbita alrededor de su estrella y se encuentra a 0,1409 UA de su estrella. Su descubrimiento se anunció en 2016.</p>
+                    <p className='white'>{currentExoplanet.description}</p>
                 </div>
             </div>
         </DDModal>
-        <DDModal 
-        position={{ top: '45%', left: '45%' }}>
-            <div className=''>
-                <ModalIcon
-                    imagen={Gota}
-                    title="Agua fluvial"
-                    texto="Se han detectado intensas tormentas eléctricas en un exoplaneta distante, con rayos iluminando su atmósfera oscura."
-                ></ModalIcon>
-            </div>
-        </DDModal>
+        {
+          currentExoplanet.icons.length > 0 ? currentExoplanet.icons.map((icon, index) => {
+            return (
+              <DDModal 
+              key={index}
+                position={positions[index]}>
+                    <div className=''>
+                        <ModalIcon
+                            imagen={icon.icon}
+                            title={icon.title}
+                            texto={icon.description}
+                        ></ModalIcon>
+                    </div>
+                </DDModal>
+            )
+          }) : <></>
+        }
         <DDModal 
         position={{ top: '50%', left: '80%' }}>
             <div className='rigth'>
@@ -177,12 +200,14 @@ function PlanetInformation() {
                 </div>
             </div>
         </DDModal>
+        
         <DDModal 
         position={{ top: '80%', left: '50%' }}>
             <div className=''>
-                <Link to="/video" style={{ textDecoration: 'none' }}>
-                    <button>VISITAR EXOPLANETA</button>
-                </Link>
+                <DDButton onClick={()=> setIsOpen(!isOpen)}>Explore Exoplanet</DDButton>
+                {/* <Link to="/video" style={{ textDecoration: 'none' }}>
+                    <button>Explore Exoplanet</button>
+                </Link> */}
             </div>
         </DDModal>
         <DDModal 
@@ -191,6 +216,12 @@ function PlanetInformation() {
                 <DDButton href="/mapping">Return to spaceship</DDButton>
                 <button onClick={nextExoplanet}>Next</button>
             </div>
+        </DDModal>
+        <DDModal
+        position={{ top: '50%', left: '50%' }}>
+          {isOpen && <div className='modal-overlay'>
+                <SelectSpacesuit/>
+            </div>}
         </DDModal>
     </div>
     );
