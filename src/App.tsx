@@ -27,7 +27,7 @@ function App() {
           <Route path="/select-planetary-system" element={<SelectPlanetarySystem />} />
           <Route path="/select-spaceship" element={<SelectSpaceship />} />
           <Route path="/loading" element={<Loading />} />
-          <Route path="/mapping/alpha-centauri" element={<Mapping />} />
+          <Route path="/mapping" element={<Mapping />} />
           <Route path="/mapping/tau-ceti" element={<TauCetiMapping />} />
           <Route path="/planet-information" element={<PlanetInformation />} />
           <Route path="/video" element={<Video videoId={videoId}/>} />
