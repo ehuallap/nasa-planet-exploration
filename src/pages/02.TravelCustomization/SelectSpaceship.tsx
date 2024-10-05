@@ -1,8 +1,7 @@
 import { useRef, useState } from "react";
-import Back1 from '../../assets/astronauta.png'
-import Back2 from '../../assets/backgrouond2.jpg'
-import Back3 from '../../assets/earth_texture.jpg'
-import Back4 from '../../assets/background.png'
+import Spaceship2 from '../../assets/spaceships/nave-2.png'
+import Spaceship6 from '../../assets/spaceships/nave-6.png'
+import Spaceship8 from '../../assets/spaceships/nave-8.png'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import DDButton from "../../components/DDButton";
@@ -10,10 +9,9 @@ import './SelectSpaceship.css'
 import useMisionStore from "../../store/store";
 import CustomBackground from "../../components/CustomBackground";
 const images = [
-    Back1,
-    Back2,
-    Back3,
-    Back4,
+  Spaceship2,
+  Spaceship6,
+  Spaceship8,
   ];
 
   const responsive = {
