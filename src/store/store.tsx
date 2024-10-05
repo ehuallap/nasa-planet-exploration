@@ -1,5 +1,30 @@
 import {create} from 'zustand';
 // Definir el store
+
+interface ExoplanetInfo {
+  label: string;
+  id: number,
+  name: string,
+  solar_system: string,
+  year: number,
+  distance_ligth_years: number,
+  type: string,
+  size: string,
+  mass: string,
+  orbit_time: string,
+  habitable : string,
+  temperature: string,
+  url_asset_texture: string,
+  url_video: string,
+  icons? : Object[]
+  //     {
+  //         name : string,
+  //         icon : string,
+  //         description : string
+  //     }
+  // ]
+}
+
 const useMisionStore = create((set : any) => ({
   name : "",
   planetarySystem : {
@@ -7,9 +32,26 @@ const useMisionStore = create((set : any) => ({
     exoplanets: []
   },
   spaceship : 0,
-  space_suit : "",
+  spacesuit : "",
   space_pet: "",
-  currentExoplanet: null,
+  currentExoplanet: {
+      id: 0,
+      name: "Unknown",
+      subtitle: "",
+      solar_system: "Unknown",
+      year: "Unknown",
+      distance_ligth_years: "Unknown",
+      type: "Unknown",
+      size: "Unknown",
+      mass: "Unknown",
+      orbit_time: "Unknown",
+      habitable : "Unknown",
+      temperature: "Unknown",
+      description: "Unknown",
+      url_asset_texture:"centauri-b.png",
+      url_video:"",
+      icons : []
+  },
   indexExoplanet : 1,
 
   setName: (newName : string) => set({name: newName}),
@@ -17,7 +59,8 @@ const useMisionStore = create((set : any) => ({
     name: name,
     exoplanets: exoplanets 
   }}),
-  setSpaceship: (newSpaceship : Number) => set({spaceship: newSpaceship}),
+  setSpaceship: (newSpaceship : number) => set({spaceship: newSpaceship}),
+  setSpacesuit: (newSpacesuit : string) => set({spacesuit: newSpacesuit}),
   setCurrentExoplanet: (indexExoplanet : any) => set((state : any)=>
     ({currentExoplanet: state.planetarySystem.exoplanets[indexExoplanet],
       indexExoplanet : indexExoplanet
