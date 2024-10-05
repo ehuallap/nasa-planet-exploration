@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
 import * as THREE from 'three';
 
-import earthTextureURL from '../assets/textures/centauri-b-2.png'
 import cloudTexture from '../assets/textures/cloud-centauri-b.jpg';
 
 import './Planet.css'
@@ -9,14 +8,18 @@ import './Planet.css'
 interface PlanetProps {
     top: string;
     left: string;
+    size: number;
+    earthTextureURL: any;
   }
 
-const Planet: React.FC<PlanetProps> = ({ top, left }) => {
+const Planet: React.FC<PlanetProps> = ({ top, left, size, earthTextureURL }) => {
 
 
     const mountRef = useRef<HTMLDivElement | null>(null);
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
+
+    let hoveredObject: THREE.Object3D | null = null;
 
     const onMouseClick = (mountRef: any, renderer: any, camera: any, scene: any) => (event: MouseEvent) => {
         if (!mountRef.current) return;
@@ -39,17 +42,58 @@ const Planet: React.FC<PlanetProps> = ({ top, left }) => {
         }
     }
 
+    const onMouseMove = (renderer: any, camera: any, scene: any) => (event: MouseEvent) => {
+        if (!mountRef.current) return;
+
+        const bounds = mountRef.current.getBoundingClientRect();
+        const mouseX = ((event.clientX - bounds.left) / bounds.width) * 2 - 1;
+        const mouseY = -((event.clientY - bounds.top) / bounds.height) * 2 + 1;
+        mouse.set(mouseX, mouseY);
+
+        raycaster.setFromCamera(mouse, camera);
+        const intersects = raycaster.intersectObjects(scene.children);
+
+        if (intersects.length > 0) {
+        const object = intersects[0].object;
+
+
+        if (object !== hoveredObject) {
+            if (hoveredObject) {
+              // Reset the material of the previously hovered object (reduce emissive)
+              const mesh = hoveredObject as THREE.Mesh;
+              const material = mesh.material as THREE.MeshStandardMaterial;
+              material.emissiveIntensity = 0; // Darker when not hovered
+            }
+    
+            // Set new hovered object
+            hoveredObject = object;
+            const mesh = hoveredObject as THREE.Mesh;
+            const material = mesh.material as THREE.MeshStandardMaterial;
+            material.emissive = new THREE.Color(0xffffff); // White light when hovered
+            material.emissiveIntensity = 0.5; // Brighten up when hovered
+        }
+    } else {
+        if (hoveredObject) {
+          // Reset the material when the mouse is no longer hovering over an object
+          const mesh = hoveredObject as THREE.Mesh;
+          const material = mesh.material as THREE.MeshStandardMaterial;
+          material.emissiveIntensity = 0; // Reset emissive intensity
+          hoveredObject = null;
+        }
+      }
+    }
+
     useEffect(() => {
         const mount = mountRef.current;
         const scene = new THREE.Scene();
 
         const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-        renderer.setSize(200, 200); 
+        renderer.setSize(size, size); 
         mount!.appendChild(renderer.domElement);
 
-        const camera = new THREE.PerspectiveCamera(75, renderer.domElement.clientWidth / renderer.domElement.clientHeight, 0.1, 1000)
-        camera.position.z = 10;
-        camera.updateProjectionMatrix()
+        const camera = new THREE.PerspectiveCamera(50, renderer.domElement.clientWidth / renderer.domElement.clientHeight, 0.1, 1000)
+        camera.position.set(0,0,20);
+        
 
         const onMouseClick1 = onMouseClick(mountRef,renderer, camera, scene)
     
@@ -65,6 +109,9 @@ const Planet: React.FC<PlanetProps> = ({ top, left }) => {
         if (mountRef.current) {
             mountRef.current.addEventListener('click', onMouseClick1);
         }
+
+        const onMouseMoveHandler= onMouseMove(renderer, camera, scene)
+        mount!.addEventListener('mousemove', onMouseMoveHandler)
         // Cargar textura de la Tierra
         loader.load(earthTextureURL, (earthTexture) => {
             const geometry = new THREE.SphereGeometry(1, 64, 64);
@@ -72,7 +119,7 @@ const Planet: React.FC<PlanetProps> = ({ top, left }) => {
             const earthMaterial = new THREE.MeshStandardMaterial({
                 map: earthTexture,
                 roughness: 1,
-                metalness: 0,
+                metalness: 1,
                 emissive: new THREE.Color(0x000000),
                 emissiveIntensity: 0,
             });
