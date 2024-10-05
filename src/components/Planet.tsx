@@ -1,18 +1,46 @@
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import * as THREE from 'three';
 
 import cloudTexture from '../assets/textures/cloud-centauri-b.jpg';
+import centauriBTextureURl from '../assets/textures/centauri-b.png'
 
 import './Planet.css'
+import { json } from "react-router-dom";
 
 interface PlanetProps {
     top: string;
     left: string;
     size: number;
-    earthTextureURL: any;
-  }
+    name: string;
+}
+interface Icon {
+    title: string;
+    icon: string;
+    description: string;
+}
 
-const Planet: React.FC<PlanetProps> = ({ top, left, size, earthTextureURL }) => {
+interface PlanetClass {
+    id: number;
+    name: string;
+    subtitle: string;
+    solar_system: string;
+    year: string;
+    distance_ligth_years: string;
+    type: string;
+    size: string;
+    mass: string;
+    orbit_time: string;
+    habitable : string;
+    temperature: string;
+    description: string;
+    url_asset_texture: string;
+    url_video: string;
+    icons: Icon[];
+}
+
+
+
+const Planet: React.FC<PlanetProps> = ({ top, left, size, name }) => {
 
 
     const mountRef = useRef<HTMLDivElement | null>(null);
@@ -83,6 +111,52 @@ const Planet: React.FC<PlanetProps> = ({ top, left, size, earthTextureURL }) => 
       }
     }
 
+    const [planets, setPlanets] = useState<PlanetClass[]>([]);
+    const [planetObject, setPlanetObject] = useState<PlanetClass | null>(null);
+
+    useEffect(() => {
+
+        const fetchData = async () => {
+            try {
+              const response = await fetch('/../src/data/exoplanets.json');
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+
+                const jsonData: PlanetClass[] = await response.json();
+
+                setPlanets(jsonData);
+            } catch (err) {
+                  console.log(err instanceof Error ? err.message : 'Unknown error');
+            }
+        };
+      
+        fetchData();
+    }, [])
+
+    useEffect( () => {
+
+        const getPlanetByName = (name: string): PlanetClass | null => {
+            const planetFound: any = planets.find(planet => planet.name == name);
+
+            if (planetFound) {
+                console.log(planetFound)
+                return planetFound;
+            } else {
+                console.log("hola");
+                return null;
+
+            }
+        };
+        
+
+        const planet: any = getPlanetByName(name);
+        setPlanetObject(planet);
+
+        console.log(planet)
+
+    }, [planets]);
+
     useEffect(() => {
         const mount = mountRef.current;
         const scene = new THREE.Scene();
@@ -113,7 +187,16 @@ const Planet: React.FC<PlanetProps> = ({ top, left, size, earthTextureURL }) => 
         const onMouseMoveHandler= onMouseMove(renderer, camera, scene)
         mount!.addEventListener('mousemove', onMouseMoveHandler)
         // Cargar textura de la Tierra
-        loader.load(earthTextureURL, (earthTexture) => {
+
+        let textureURL: string = "";
+
+        if (planetObject) {
+            textureURL = `../src/assets/textures/${planetObject!.url_asset_texture}`;
+        } else {
+            textureURL = "../src/assets/textures/centauri-b.png"
+        }
+
+        loader.load(textureURL, (earthTexture) => {
             const geometry = new THREE.SphereGeometry(1, 64, 64);
             // Material para el planeta
             const earthMaterial = new THREE.MeshStandardMaterial({
@@ -187,7 +270,7 @@ const Planet: React.FC<PlanetProps> = ({ top, left, size, earthTextureURL }) => 
             renderer.dispose();
         };
         
-    }, []);
+    }, [planetObject]);
 
     return (
         <div

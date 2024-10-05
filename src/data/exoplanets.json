@@ -14,7 +14,7 @@
         "temperature": "-39°C",
         "description": "Planeta rocoso y frío bañado en luz roja, ubicada en zona habitable. Con una atmosfera misteriosa y con indicios de agua sólida en su superficie. Con posibilidades de paisajes montañosos cubiertos de minerales exóticos.",
         "url_asset_texture":"centauri-b.png",
-        "url_video":"",
+        "url_video": "",
         "icons" : [
             {
                 "title" : "Rocks",
