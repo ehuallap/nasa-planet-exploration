@@ -1,0 +1,9 @@
+.planet-class {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+
+.planet-class:hover {
+    transform: scale(1.1);
+}
