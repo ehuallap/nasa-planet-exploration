@@ -1,6 +1,7 @@
 import DDButton from '../../components/DDButton';
 import useMisionStore from '../../store/store';
 import './Mapping.css'
+import * as THREE from 'three';
 
 import Background from '../../assets/astronauta-vista-espacio.png'
 import CentauriA from '../../assets/exoplanets/centauri-a.jpg'
@@ -8,11 +9,17 @@ import CentauriB from '../../assets/exoplanets/centauri-b.png'
 import CentauriC from '../../assets/exoplanets/centauri-c.png'
 import CentauriD from '../../assets/exoplanets/centauri-d.png'
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
 
+import  Planet from '../../components/Planet'
 
 
 const Mapping = () => {
+
+
     const { planetarySystem, currentExoplanet, setCurrentExoplanet } = useMisionStore();
+
+    const [selectedPlanet, setSelectedPlanet] = useState<string | null>(null);
 
     const navigate = useNavigate();
     const changeExoplanet = ( option : Number) => {
@@ -23,6 +30,7 @@ const Mapping = () => {
 
     return (
         <div className='container-mapping'>
+
             <img
                 src={Background}
                 alt="Background"
@@ -55,13 +63,8 @@ const Mapping = () => {
                 className="clickable-image"
                 style={{ top: '0%', left: '-20%', width: '100%', height: '100%', zIndex: 0 }}
             />
-            <div className='exoplanets-mapping'>
-            {
-                planetarySystem.exoplanets.map((exoplanet, index)=>{
-                    return <DDButton href="/planet-information" onClick={()=>changeExoplanet(index)}>{exoplanet.name} </DDButton>
-                })
-            }
-            </div>
+            <Planet top="10%" left='50%'/>
+            <Planet top="20%" left='10%'/>
         </div>
     );
 }
