@@ -32,7 +32,7 @@ const useMisionStore = create((set : any) => ({
     exoplanets: []
   },
   spaceship : 0,
-  space_suit : "",
+  spacesuit : "",
   space_pet: "",
   currentExoplanet: {
       id: 0,
@@ -59,7 +59,8 @@ const useMisionStore = create((set : any) => ({
     name: name,
     exoplanets: exoplanets 
   }}),
-  setSpaceship: (newSpaceship : Number) => set({spaceship: newSpaceship}),
+  setSpaceship: (newSpaceship : number) => set({spaceship: newSpaceship}),
+  setSpacesuit: (newSpacesuit : string) => set({spacesuit: newSpacesuit}),
   setCurrentExoplanet: (indexExoplanet : any) => set((state : any)=>
     ({currentExoplanet: state.planetarySystem.exoplanets[indexExoplanet],
       indexExoplanet : indexExoplanet
