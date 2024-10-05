@@ -2,16 +2,16 @@ import { useState, useEffect, useRef } from "react";
 import * as THREE from 'three';
 
 import cloudTexture from '../assets/textures/cloud-centauri-b.jpg';
-import centauriBTextureURl from '../assets/textures/centauri-b.png'
 
+import { useNavigate } from "react-router-dom";
 import './Planet.css'
-import { json } from "react-router-dom";
 
 interface PlanetProps {
     top: string;
     left: string;
     size: number;
     name: string;
+    onClick: any;
 }
 interface Icon {
     title: string;
@@ -38,10 +38,9 @@ interface PlanetClass {
     icons: Icon[];
 }
 
+const Planet: React.FC<PlanetProps> = ({ top, left, size, name, onClick }) => {
 
-
-const Planet: React.FC<PlanetProps> = ({ top, left, size, name }) => {
-
+    const navigate = useNavigate();
 
     const mountRef = useRef<HTMLDivElement | null>(null);
     const raycaster = new THREE.Raycaster();
@@ -66,7 +65,8 @@ const Planet: React.FC<PlanetProps> = ({ top, left, size, name }) => {
         if (intersects.length > 0) {
             const object = intersects[0].object;
             console.log("Object clicked:", object);
-            alert(`Object clicked`);
+            onClick();
+            setTimeout(() => navigate('/planet-information'), 1000);
         }
     }
 
@@ -273,16 +273,19 @@ const Planet: React.FC<PlanetProps> = ({ top, left, size, name }) => {
     }, [planetObject]);
 
     return (
-        <div
-            ref={mountRef}
-            className="planet-class"
-            style={{
-                position: 'absolute',
-                top: top,
-                left: left, 
-                zIndex: 2,
-                pointerEvents: 'auto' }} />
-
+        <>
+            <div
+                ref={mountRef}
+                className="planet-class"
+                style={{
+                    position: 'absolute',
+                    top: top,
+                    left: left, 
+                    zIndex: 2,
+                pointerEvents: 'auto' }} >
+                    <div className="modal-planet">{name}</div>
+                </div>
+        </>
     );
 }
  

@@ -1,6 +1,11 @@
 import { useEffect, useRef } from 'react';
 
-const BackgroundAudio = ({ href }) => {
+
+
+interface BackgroundAudioProps {
+  href: string;
+}
+const BackgroundAudio: React.FC<BackgroundAudioProps> = ({ href }) => {
   const audioRef = useRef(null);
 
   useEffect(() => {

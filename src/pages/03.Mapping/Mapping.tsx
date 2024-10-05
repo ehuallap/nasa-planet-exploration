@@ -67,9 +67,10 @@ const Mapping = () => {
                 className="clickable-image"
                 style={{ top: '0%', left: '-20%', width: '100%', height: '100%', zIndex: 0 }}
             />
-            <Planet top="40%" left='46%' size={180} name="Proxima Centauri b" />
-            <Planet top="15%" left='20%' size={150} name='Proxima Centauri c' />
-            <Planet top="50%" left='15%' size={250} name='Proxima Centauri d' />
+            <Planet top="40%" left='46%' size={180} name="Proxima Centauri b" onClick={() => changeExoplanet(0)} />
+            <Planet top="15%" left='20%' size={150} name='Proxima Centauri c' onClick={() => changeExoplanet(1)} />
+            <Planet top="50%" left='15%' size={250} name='Proxima Centauri d' onClick={() => changeExoplanet(2)} />
+
         </div>
     );
 }

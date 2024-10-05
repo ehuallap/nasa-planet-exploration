@@ -5,7 +5,7 @@ import earthTextureURL from '../../assets/textures/centauri-b-2.png'
 import DDModal from '../../components/DDModal';
 import ModalIcon from './ModalIcon';
 import Gota from '../../assets/gota.png'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useMisionStore from '../../store/store';
 import DDButton from '../../components/DDButton';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
@@ -18,17 +18,30 @@ import SpaceSuit1 from '../../assets/spacesuits/spacesuit-helado-rocoso-sin-atmo
 
 function PlanetInformation() {
   const mountRef = useRef<HTMLDivElement>(null);
-  
-  const { currentExoplanet, indexExoplanet, nextCurrentExoplanet } = useMisionStore();
+  const navigate = useNavigate();
+  const { currentExoplanet, indexExoplanet, nextCurrentExoplanet, setCurrentExoplanet, planetarySystem } = useMisionStore();
   const [isOpen, setIsOpen] = useState(false);
+  
+  const [planet, setPlanet] = useState<any>(currentExoplanet);
+  const [planetURL, setPlanetURL] = useState<string>(currentExoplanet.url_asset_texture);
   const nextExoplanet  = () => {
     console.log("index ", indexExoplanet)
-    nextCurrentExoplanet()
+    if (planetarySystem.exoplanets.length <= indexExoplanet + 1) {
+      setCurrentExoplanet(0);
+      setPlanet(currentExoplanet);
+      setPlanetURL(currentExoplanet.url_asset_texture);
+
+    } else { 
+      setCurrentExoplanet(indexExoplanet + 1)
+      setPlanet(currentExoplanet);
+      setPlanetURL(currentExoplanet.url_asset_texture);
+    }
     console.log("index ", indexExoplanet)
   }
-  const url_texture = new URL("../../assets/textures/" + currentExoplanet.url_asset_texture, import.meta.url).href
-  console.log("texture", url_texture)
+  
   useEffect(() => {
+    const url_texture = new URL("../../assets/textures/" + planetURL, import.meta.url).href
+    console.log("texture", url_texture)
     const mount = mountRef.current;
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -54,7 +67,6 @@ function PlanetInformation() {
     scene.add(directionalLight);
 
     const loader = new THREE.TextureLoader();
-    const loader2 = new THREE.TextureLoader();
 
     
     // Cargar textura de la Tierra
@@ -128,80 +140,7 @@ function PlanetInformation() {
       });
     });
 
-
-    loader2.load(earthTextureURL, (earthTexture) => {
-      const geometry = new THREE.SphereGeometry(1, 64, 64);
-
-      // Material para el planeta
-      const earthMaterial = new THREE.MeshStandardMaterial({
-        map: earthTexture,
-        roughness: 1,
-        metalness: 0,
-        emissive: new THREE.Color(0x000000),
-        emissiveIntensity: 0,
-      });
-
-      // Esfera para el planeta
-      const earthSphere = new THREE.Mesh(geometry, earthMaterial);
-      earthSphere.position.x = 3.5
-      scene.add(earthSphere);
-
-      // Cargar la textura de nubes
-      loader2.load(cloudTexture, (cloudTexture) => {
-        const cloudGeometry = new THREE.SphereGeometry(1.02, 64, 64); // Ligeramente más grande que la Tierra
-        const cloudMaterial = new THREE.MeshStandardMaterial({
-          map: cloudTexture,
-          transparent: true, // Para que solo las nubes sean visibles
-          opacity: 0.2, // Ajustar la opacidad de las nubes
-        });
-
-        // Esfera para las nubes
-        const cloudSphere = new THREE.Mesh(cloudGeometry, cloudMaterial);
-        cloudSphere.position.x = 3.5
-        scene.add(cloudSphere);
-
-        camera.position.z = 2.5;
-
-        // Animación
-        const animate = () => {
-          requestAnimationFrame(animate);
-
-          // Mantener el giro automático del planeta y las nubes con velocidades distintas
-          earthSphere.rotation.y += 0.0007; // Velocidad del planeta
-          cloudSphere.rotation.y += 0.001; // Velocidad de las nubes, más rápida
-
-          // Actualizar controles de orbitación
-          controls.update();
-
-          renderer.render(scene, camera);
-        };
-        animate();
-
-        const handleResize = () => {
-          camera.aspect = window.innerWidth / window.innerHeight;
-          camera.updateProjectionMatrix();
-          renderer.setSize(window.innerWidth, window.innerHeight);
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-          window.removeEventListener('resize', handleResize);
-
-          // Limpiar objetos de Three.js
-          scene.remove(earthSphere);
-          scene.remove(cloudSphere);
-          controls.dispose();
-          renderer.dispose();
-          const canvas = renderer.domElement;
-          if (canvas && mount.contains(canvas)) {
-            mount.removeChild(canvas);
-          }
-        };
-      });
-    });
-
-  }, []);
+  }, [planetURL]);
 
   const positions = [
     { top: "42%", left: "42%" },

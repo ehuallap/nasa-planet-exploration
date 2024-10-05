@@ -58,7 +58,7 @@ const SelectSpaceship = () => {
               ))}
               </Carousel>
               <div className="bottom">
-                <DDButton href={`/mapping/${planetarySystem.name}`} onClick={handleSelectClick}>Select</DDButton>
+                <DDButton href={'/mapping/'} onClick={handleSelectClick}>Select</DDButton>
               </div>
           </div>
         </CustomBackground>

@@ -34,9 +34,9 @@ const MisionDescription = () => {
     return (
         <div className='container-mision'>
             <div className="left">
-                { text1 && <DDTitle text="Welcome to SOLUTI's Mission" fontSize='35px' color='white' audioSrc={Typing}></DDTitle>}
-                { text2 && <DDTitle text="You are going to be part of the most wonderful adventure, your are going to be the traveler of the future" fontSize='30px' color='white' audioSrc={Typing}></DDTitle>}
-                { text3 && <DDTitle text="Enter your name: " fontSize='30px' color='white' audioSrc={Typing}></DDTitle>}
+                { text1 && <DDTitle text="Welcome Space Walker" fontSize='35px' color='white' audioSrc={Typing}></DDTitle>}
+                { text2 && <DDTitle text='You have been selected to be part of the mission "Lost Worlds", you will have to explore the strangest and most peculiar exoplanets in the Milky Way' fontSize='30px' color='white' audioSrc={Typing}></DDTitle>}
+                { text3 && <DDTitle text="State your name now and prepare for the mission: " fontSize='30px' color='white' audioSrc={Typing}></DDTitle>}
                 <input type="text" className="input" onChange={handleInputChange}></input>
                 { name.length > 0 ? (<Link to="/select-planetary-system" style={{ textDecoration: 'none' }} onClick={addNameToStore}><button className="button">Next</button></Link>)
                     : (<span style={{ textDecoration: 'none'}}><button className="button" disabled>Next</button></span>)    
