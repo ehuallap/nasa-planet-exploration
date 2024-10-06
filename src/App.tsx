@@ -8,6 +8,7 @@ import Mapping from './pages/03.Mapping/Mapping.js';
 import PlanetInformation from './pages/04.PlanetExploration/PlanetInformation.js';
 import Video from './pages/04.PlanetExploration/Video.js';
 import SelectSpaceship from './pages/02.TravelCustomization/SelectSpaceship.js';
+import ExoplanetTypes from './pages/01.LandingPage/ExoPlanetTypes.js';
 
 function App() {
   //const videoUrl = "https://www.youtube.com/watch?v=yDjgUWWE1IQ";
@@ -29,6 +30,7 @@ function App() {
           <Route path="/mapping" element={<Mapping />} />
           <Route path="/planet-information" element={<PlanetInformation />} />
           <Route path="/video" element={<Video videoId={videoId}/>} />
+          <Route path="/exoplanet-types" element={<ExoplanetTypes />} />
         </Routes>
       </div>
     </Router>

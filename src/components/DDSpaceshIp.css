@@ -1,0 +1,66 @@
+.spaceship-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    cursor: pointer; /* Cambia el cursor para indicar que es un botón */
+}
+
+.spaceship-circle {
+    width: 350px;
+    height: 350px;
+    background-image: url('../assets/spaceship.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: brightness(100%);
+    transition: filter 0.4s ease; /* Transición suave para el filtro */
+    animation: pulsate 1.5s infinite; /* Aplicar animación pulsante */
+}
+
+@keyframes pulsate {
+    0%, 100% {
+        filter: brightness(100%);
+        transform: scale(1);
+    }
+    50% {
+        filter: brightness(70%);
+        transform: scale(1.1);
+    }
+}
+
+.spaceship-circle.hovered {
+    filter: brightness(70%);
+    transform: scale(1.1);
+    transition: filter 0.4s ease, transform 0.4s ease;
+    animation: none;
+}
+
+@keyframes text-pulsate {
+    0%, 60%, 100% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 0.8;
+    }
+}
+
+.spaceship-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centrar el texto sobre el círculo */
+    font-size: 25px;
+    color: white;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    animation: text-pulsate 1.5s infinite;
+}
+
+.spaceship-text.fade-in {
+    animation: none;
+    opacity: 0.8;
+    transition: opacity 0.5s ease; /* Suavizar transición de opacidad */
+}

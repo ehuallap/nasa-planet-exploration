@@ -1,20 +1,19 @@
-
-
+body {
+    font-family: 'Cubest', sans-serif;
+}
 .hero {
-    background-image: url('../../assets/background.png'); /* Replace with your image URL */
+    background-image: url('../../assets/background.png');
     background-size: cover;
     background-position: center;
-    height: 100vh; /* Full viewport height */
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start; /* Aligns content to the left */
+    align-items: flex-start;
     color: white;
     text-align: left;
-    position: relative;
-    padding-left: 120px; /* Adds some space from the left edge */
+    padding-left: 120px;
 }
-
 
 /* Ensure text and buttons appear on top of the overlay */
 .hero-content {
@@ -31,24 +30,33 @@
 }
 
 .slogan {
-    font-size: 20px;;
+    font-size: 20px;
+    ;
     font-family: 'Cubest', sans-serif;
     color: #F5D15F;
 }
 
 .description {
-    font-size: 20px;;
+    font-size: 20px;
+    ;
     font-family: 'Cubest', sans-serif;
     color: #ffffff;
 
 }
 
-.button-container {
-    text-align: center; /* Center buttons inside the content */
-    width: 100%; /* Full width of the container */
-    margin-top: 20px; /* Optional spacing above buttons */
+.explore-button {
+    justify-content: right;
 }
 
+.button-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    /* Full width of the container */
+    height: 30%;
+    margin-top: 5%;
+    /* Optional spacing above buttons */
+}
 
 .button {
     margin: 10px;
@@ -64,25 +72,33 @@
 
 .content {
     padding: 20px;
-    min-height: 100vh; /* Makes it take up full viewport height */
-    background-image: url('../../assets/exoplanet_desc.png'); /* New background image */
+    min-height: 100vh;
+    /* Makes it take up full viewport height */
+    background-image: url('../../assets/exoplanet_desc.png');
+    /* New background image */
     background-position: top right;
     background-repeat: no-repeat;
     background-color: black;
-    color: black; /* Adjust text color if necessary */
-    padding-left: 120px; /* Adds some space from the left edge */
+    color: black;
+    /* Adjust text color if necessary */
+    padding-left: 120px;
+    /* Adds some space from the left edge */
 
 }
 
 .important-facts {
     padding: 20px;
-    min-height: 100vh; /* Makes it take up full viewport height */
-    background-image: url('../../assets/exoplanet_desc.png'); /* New background image */
+    min-height: 100vh;
+    /* Makes it take up full viewport height */
+    background-image: url('../../assets/exoplanet_desc.png');
+    /* New background image */
     background-size: 70%;
     background-position: top right;
     background-repeat: no-repeat;
     background-color: black;
-    color: black; /* Adjust text color if necessary */
-    padding-left: 120px; /* Adds some space from the left edge */
+    color: black;
+    /* Adjust text color if necessary */
+    padding-left: 120px;
+    /* Adds some space from the left edge */
 
 }
