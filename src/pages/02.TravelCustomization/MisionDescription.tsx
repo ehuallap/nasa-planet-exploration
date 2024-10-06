@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import './MisionDescription.css';
 import Astronaut from '../../assets/astronauta.png'
@@ -20,7 +20,7 @@ const MisionDescription = () => {
 
     setTimeout(()=>{
         setText3(true);
-    }, 10000);
+    }, 11000);
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setNameLocal(event.target.value);
@@ -31,11 +31,21 @@ const MisionDescription = () => {
         setName(name);
     }
 
+    const audioRef = useRef(null);
+
+    useEffect(() => {
+        const audioElement = audioRef.current;
+        if (audioElement) {
+        audioElement.play();
+        }
+    }, []);
+
     return (
         <div className='container-mision'>
+            <audio ref={audioRef} src={href} loop autoPlay />
             <div className="left">
                 { text1 && <DDTitle text="Welcome Space Walker" fontSize='35px' color='white' audioSrc={Typing}></DDTitle>}
-                { text2 && <DDTitle text='You have been selected to be part of the mission "Lost Worlds", you will have to explore the strangest and most peculiar exoplanets in the Milky Way' fontSize='30px' color='white' audioSrc={Typing}></DDTitle>}
+                { text2 && <DDTitle text="You have been selected to be part of the mission 'Lost Worlds', you'll have to explore the strangest and most peculiar exoplanets in the Milky Way" fontSize='30px' color='white' audioSrc={Typing}></DDTitle>}
                 { text3 && <DDTitle text="State your name now and prepare for the mission: " fontSize='30px' color='white' audioSrc={Typing}></DDTitle>}
                 <input type="text" className="input" onChange={handleInputChange}></input>
                 { name.length > 0 ? (<Link to="/select-planetary-system" style={{ textDecoration: 'none' }} onClick={addNameToStore}><button className="button">Next</button></Link>)

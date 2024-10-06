@@ -2,6 +2,7 @@ import './LandingPage.css'
 import DDTitle from '../../components/DDTitle';
 import DDExoplanet from '../../components/DDExoplanet';
 import DDSpaceship from '../../components/DDSpaceShip';
+import DDButton from '../../components/DDButton';
 
 const LandingPage = () => {
     return (
@@ -13,8 +14,9 @@ const LandingPage = () => {
                     <DDTitle text='VIAJA Y DESCUBRE NUEVOS EXOPLANETAS' fontSize='80px' color='white'></DDTitle>
                 </div>
                 <div className='button-container'>
-                    <DDExoplanet />
-                    <DDSpaceship />
+                    <DDButton href="mision-description">Start Mission</DDButton>
+                    {/* <DDExoplanet />
+                    <DDSpaceship /> */}
                 </div>
             </div>
             <div className="content" id="exoplanet-history">

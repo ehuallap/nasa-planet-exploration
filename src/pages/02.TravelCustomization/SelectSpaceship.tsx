@@ -14,6 +14,12 @@ const images = [
   Spaceship8,
   ];
 
+  const descriptions = [
+    "A light, streamlined spacecraft with a shiny, thin hull that seems designed to cut through the stellar wind. Its small size and sleek shape suggest impressive speed, as if it could zip through space in the blink of an eye",
+    "Robust and aggressive, this ship is armored with thick metal plates that make it seem almost invulnerable. Cannons and turrets are strategically distributed along its body, ready to unleash a firestorm at any moment",
+    "The ship appears to be the pinnacle of advanced engineering and cutting-edge technology. Its engines glow with a silent glow, and the advanced antennas and sensors on its structure indicate that it is equipped with the latest in exploration and intelligence technology."
+  ]
+
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
@@ -52,17 +58,20 @@ const SelectSpaceship = () => {
           <CustomBackground>
             <div>
               <div className="text-title">
-                <p>Select your spaceship</p>
+                <p>Choose your spaceship</p>
               </div>
               <Carousel ref={carouselRef}  responsive={responsive} arrows={true}>
               {images.map((image, index) => (
-                  <div key={index} style={{ height: '70vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                      <img src={image} className="spaceship" alt={`Imagen ${index + 1}`} style={{ maxHeight: '100%', maxWidth: '100%', objectFit: 'cover' }} />
+                  <div className="spaceship-div" key={index} style={{ height: '70vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                      <img src={image} className="spaceship-img" alt={`Imagen ${index + 1}`} style={{ maxHeight: '100%', maxWidth: '100%', objectFit: 'cover' }} />
+                      <div className="spaceship-p-con">
+                        <p className="spaceship-p">{descriptions[index]}</p>
+                      </div>
                   </div>
               ))}
               </Carousel>
               <div className="bottom">
-                <DDButton href={'/mapping/'} onClick={handleSelectClick}>Select</DDButton>
+                <DDButton href={'/mapping/'} onClick={handleSelectClick}>Choose</DDButton>
               </div>
           </div>
         </CustomBackground>

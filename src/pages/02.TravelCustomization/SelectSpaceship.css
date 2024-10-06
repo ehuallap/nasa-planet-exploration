@@ -5,7 +5,23 @@
   padding: 1rem 0rem;
 }
 
-.spaceship {
+.spaceship-div{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  color: white;
+}
+.spaceship-p-con {
+  width: 70vw;
+  min-height: 7.5rem;
+}
+.spaceship-p{
+  color: white;
+  text-align: center;
+  line-height: 1.4rem;
+}
+
+.spaceship-img {
   transform: scaleX(-1);
   animation: float 4s ease-in-out infinite;
 }

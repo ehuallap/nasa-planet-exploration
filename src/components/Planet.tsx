@@ -66,7 +66,7 @@ const Planet: React.FC<PlanetProps> = ({ top, left, size, name, onClick }) => {
             const object = intersects[0].object;
             console.log("Object clicked:", object);
             onClick();
-            setTimeout(() => navigate('/planet-information'), 1000);
+            //setTimeout(() => navigate('/planet-information'), 1000);
         }
     }
 

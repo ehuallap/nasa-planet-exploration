@@ -24,3 +24,29 @@
     z-index: 10; /* Asegura que esté por encima de otros elementos */
     line-height: 1.0rem;
   }
+
+  .darker {
+    filter: brightness(0.5);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    animation: brillo 1s infinite alternate;
+    border-radius: 50%;
+    border: 5px solid transparent;
+    animation: parpadeo 2s infinite;
+  }
+
+  @keyframes brillo {
+    0% {
+        box-shadow: 0 0 10px transparent;
+    }
+    100% {
+        box-shadow: 0 0 20px rgb(255, 226, 9);
+    }
+}
+@keyframes parpadeo {
+  0%, 100% {
+      border-color: transparent;
+  }
+  50% {
+      border-color: rgba(255, 255, 4, 0.8); /* Color del borde */
+  }
+}

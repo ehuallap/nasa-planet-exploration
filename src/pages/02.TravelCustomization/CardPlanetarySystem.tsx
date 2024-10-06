@@ -50,7 +50,12 @@ const CardPlanetarySystem = ({clas, slug, text}) => {
     const changePlanetarySystem = ( option : string) => {
         audioClick.play()
         const filtered = exoplanetsData.filter((item) => item.solar_system === option)
-        setPlanetarySystem(slug, filtered);
+        const mapped = filtered.map(obj => ({
+          ...obj,
+          unlocked: false ,
+          explored: false,
+        }));
+        setPlanetarySystem(slug, mapped);
         navigate("/select-spaceship")
     }
 

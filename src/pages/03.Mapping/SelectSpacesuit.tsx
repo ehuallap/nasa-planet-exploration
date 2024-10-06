@@ -13,19 +13,19 @@ const SelectSpacesuit = () => {
     }
   return (
         <div className='space-suit-container'>
-            <p className='title'>Select your Spacesuit</p>
+            <p className='title'>Choose your Spacesuit</p>
             <div className='suit-grid'>
                 <div className='div-suitbtn'>
                     <img className='suit-image' src={SpaceSuit4} alt="Spacesuit"/>
-                    <DDButton href="/video" onClick={()=>changeSpaceSuit(SpaceSuit4.toString())}>Select</DDButton>
+                    <DDButton href="/video" onClick={()=>changeSpaceSuit(SpaceSuit4.toString())}>Choose</DDButton>
                 </div>
                 <div className='div-suitbtn'>
                     <img className='suit-image' src={SpaceSuit1} alt="Spacesuit"/>
-                    <DDButton href="/video" onClick={()=>changeSpaceSuit(SpaceSuit1.toString())}>Select</DDButton>
+                    <DDButton href="/video" onClick={()=>changeSpaceSuit(SpaceSuit1.toString())}>Choose</DDButton>
                 </div>
                 <div className='div-suitbtn'>
                     <img className='suit-image' src={SpaceSuit5} alt="Spacesuit"/>
-                    <DDButton href="/video" onClick={()=>changeSpaceSuit(SpaceSuit5.toString())}>Select</DDButton>
+                    <DDButton href="/video" onClick={()=>changeSpaceSuit(SpaceSuit5.toString())}>Choose</DDButton>
                 </div>
             </div>
         </div>

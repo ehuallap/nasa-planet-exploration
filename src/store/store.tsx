@@ -16,6 +16,8 @@ interface ExoplanetInfo {
   temperature: string,
   url_asset_texture: string,
   url_video: string,
+  ref: string,
+  unlocked : boolean,
   icons? : Object[]
   //     {
   //         name : string,
@@ -50,7 +52,10 @@ const useMisionStore = create((set : any) => ({
       description: "Unknown",
       url_asset_texture:"centauri-b.png",
       url_video:"",
-      icons : []
+      ref: "",
+      icons : [],
+      unlocked: false,
+      explored: false,
   },
   indexExoplanet : 1,
 

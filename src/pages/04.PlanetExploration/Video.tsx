@@ -1,5 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import DDButton from "../../components/DDButton";
+import useMisionStore from "../../store/store";
 
 declare global {
   interface Window {
@@ -8,11 +10,19 @@ declare global {
   }
 }
 
-const Video = ({ videoId }) => {
+const Video = () => {
   const iframeRef = useRef(null);
+  const {currentExoplanet} = useMisionStore()
   const navigate = useNavigate();
+  currentExoplanet.explored = true
+  const videoUrl = currentExoplanet.url_video;
+  const videoId = videoUrl.split('v=')[1]; 
+  //const ampersandPosition = videoId.indexOf('&');
+  // if (ampersandPosition !== -1) {
+  //   videoId = videoId.substring(0, ampersandPosition); // Si hay un "&", corta el ID hasta esa posición
+  // }
 
-  // Función para cargar la API de YouTube
+
   const loadYouTubeAPI = () => {
     const script = document.createElement('script');
     script.src = "https://www.youtube.com/iframe_api";
@@ -37,6 +47,7 @@ const Video = ({ videoId }) => {
               console.log("El video está listo"); // Verificar si onReady se llama
               event.target.unMute(); // Intenta desactivar el silencio
               event.target.setVolume(100); // Ajusta el volumen al 100%
+              event.target.sasd();
             },
             'onStateChange': (event) => {
               if (event.data === window.YT.PlayerState.ENDED) {
@@ -74,7 +85,7 @@ const Video = ({ videoId }) => {
         ref={iframeRef}
         width="100%"
         height="100%"
-        src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+        src={`https://www.youtube.com/embed/${videoId}?autoplay=1&loop=1&playlist=${videoId}`}
         title="YouTube video player"
         frameBorder="0"
         allow="autoplay; encrypted-media"
@@ -93,16 +104,15 @@ const Video = ({ videoId }) => {
           left: '50%',
           transform: 'translate(-50%, -50%)',
           padding: '10px 20px',
-          backgroundColor: 'rgba(255, 255, 255, 0.7)', // Fondo semitransparente
-          border: 'none',
-          borderRadius: '5px',
           cursor: 'pointer',
           zIndex: 10000, // Asegúrate de que el botón esté por encima
-          fontSize: "1.5rem",
         }}
       >
-        Regresar
+        Leave the exoplanet
       </button>
+      {/* <DDButton position={{ top: '80%', left: '50%' }}>
+        Leave the exoplanet
+      </DDButton> */}
     </div>
   );
 };

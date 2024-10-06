@@ -14,17 +14,25 @@
         "temperature": "-39°C",
         "description": "Planeta rocoso y frío bañado en luz roja, ubicada en zona habitable. Con una atmosfera misteriosa y con indicios de agua sólida en su superficie. Con posibilidades de paisajes montañosos cubiertos de minerales exóticos.",
         "url_asset_texture":"centauri-b.png",
-        "url_video": "",
+        "url_video": "https://www.youtube.com/watch?v=CQMaJ8Gc-Z0",
         "icons" : [
             {
                 "title" : "Rocks",
                 "icon" : "rock.png",
-                "description" : "A cold, rocky planet bathed in red light, located in a habitable zone."
+                "description" : "A cold, rocky planet bathed in red light, located in a habitable zone.",
+                "correct": true
             },
             {
                 "title" : "Atmosphere",
                 "icon" : "atmosphere.png",
-                "description" : "The exoplanet presents a misteryous atmosphere"
+                "description" : "The exoplanet presents a misteryous atmosphere",
+                "correct": true
+            },
+            {
+                "title" : "Water",
+                "icon" : "gota.png",
+                "description" : "The exoplanet presents water in its surface",
+                "correct": false
             }
         ]
             
@@ -44,7 +52,7 @@
         "temperature": "-234°C",
         "description": "",
         "url_asset_texture":"centauri-c.jpg",
-        "url_video":"",
+        "url_video":"https://www.youtube.com/watch?v=MDUtGS41uGY",
         "icons" : [
             {
                 "title" : "Rocks",
@@ -73,12 +81,13 @@
         "temperature": "-40°C",
         "description": "",
         "url_asset_texture":"centauri-d.avif",
-        "url_video":"",
+        "url_video":"https://www.youtube.com/watch?v=kaOTDkBfPZM",
         "icons" : [
             {
                 "title" : "Rocks",
                 "icon" : "rock.png",
-                "description" : "A small, cold, rocky planet located beyond the habitable zone of its star"
+                "description" : "A small, cold, rocky planet located beyond the habitable zone of its star",
+                "selected" : true
             },
             {
                 "title" : "Wind",
@@ -187,7 +196,8 @@
         "temperature": "31°C",
         "description": "",
         "url_asset_texture":"gliese-1061-c.jpg",
-        "url_video":""
+        "url_video":"",
+        "ref": "" 
     },
     {
         "id": 9,
