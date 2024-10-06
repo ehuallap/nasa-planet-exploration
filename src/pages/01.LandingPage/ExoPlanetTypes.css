@@ -1,0 +1,58 @@
+.exoplanet-types {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 0.5fr repeat(4, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    height: 100vh;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+h1 {
+    color: white;
+}
+
+.header {
+    grid-area: 1 / 1 / 2 / 6;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.planet-container-1 {
+    grid-area: 2 / 1 / 6 / 3;
+    align-content: center;
+    height: 100%;
+    position: relative;
+}
+.planet-container-1 img {
+    width: 120%;
+    position: absolute;
+    left: -50%;
+    top: -10%;
+}
+.planet-container-2 {
+    grid-area: 2 / 3 / 6 / 4; 
+}
+.planet-container-2 img {
+    width: 35%;
+    left: 30%;
+    position: absolute;
+}
+.planet-container-3 {
+    grid-area: 2 / 4 / 4 / 6;
+}
+.planet-container-3 img {
+    width: 18%;
+    right: 10%;
+    position: absolute;
+}
+.planet-container-4 {
+    grid-area: 4 / 4 / 6 / 6;
+}
+.planet-container-4 img {
+    width: 40%;
+    transform: scaleX(-1);
+    top: 50%;
+    position: absolute;
+}
