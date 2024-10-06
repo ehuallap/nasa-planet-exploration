@@ -49,19 +49,17 @@ type CardPlanetarySystemProps = {
   text: string;
 };
 
-const CardPlanetarySystem: React.FC<CardPlanetarySystemProps> = ({ clas, text }) => {
+const CardPlanetarySystem = ({clas, slug, text}) => {
   const audio = new Audio(HoverAudio);
   const audioClick = new Audio(ClickAudio);
-  const { setPlanetarySystem } = useMisionStore(); // Ahora TypeScript conoce el tipo
-  const navigate = useNavigate();
-
-  const changePlanetarySystem = (option: string) => {
-    audioClick.play();
-    const filtered = exoplanetsData.filter((item) => item.solar_system === option);
-    
-    setPlanetarySystem("Planetary System : " + option, filtered);
-    navigate("/select-spaceship");
-  };
+    const { planetarySystem, setPlanetarySystem } = useMisionStore();
+    const navigate = useNavigate();
+    const changePlanetarySystem = ( option : string) => {
+        audioClick.play()
+        const filtered = exoplanetsData.filter((item) => item.solar_system === option)
+        setPlanetarySystem(slug, filtered);
+        navigate("/select-spaceship")
+    }
 
   const handleMouseEnter = () => {
     audio.play();  // Reproduce el audio

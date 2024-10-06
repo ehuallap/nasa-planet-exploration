@@ -1,31 +1,56 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 interface DDTitleProps {
   text: string;
   speed?: number;
   color?: string;
   fontSize?: string;
+  audioSrc?: string;
 }
 
-const DDTitle: React.FC<DDTitleProps> = ({ text, speed = 70, color = "black", fontSize = "20px" }) => {
-  const [visibleText, setVisibleText] = useState<string>(''); // Estado para almacenar el texto que se va mostrando
-  const [index, setIndex] = useState<number>(0); // Estado para manejar el índice actual de la letra que se revela
-
+const DDTitle: React.FC<DDTitleProps> = ({ text, speed = 70, color = "black", fontSize = "20px", audioSrc}) => {
+  const [displayedText, setDisplayedText] = useState<string>('');
+  const [index, setIndex] = useState<number>(0);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  
   useEffect(() => {
+    console.log("user Effect")
+    if (audioSrc && index === 0) {
+      audioRef.current = new Audio(audioSrc);
+      audioRef.current.loop = false;
+      audioRef.current.play();
+    }
+
+    // Detener el audio cuando termine de escribir
+    if (index >= text.length && audioRef.current) {
+      console.log("termino de escribir")
+      console.log("termino de escribir:", audioRef)
+      console.log("termino de escribir:", audioRef.current)
+      audioRef.current.pause();
+      //audioRef.current.currentTime = 0; // Reiniciar el audio
+      console.log("Terminó de escribir, audio actual:", audioRef.current);
+    }
+
     if (index < text.length) {
-      const timeout = setTimeout(() => {
-        setVisibleText((prev) => prev + text[index]); // Añade una letra cada vez
-        setIndex((prev) => prev + 1);
+      if(audioRef.current?.ended){
+        audioRef.current.currentTime = 0;
+        audioRef.current.play();
+      }
+      const timeoutId = setTimeout(() => {
+        setDisplayedText((prev) => prev + text[index]);
+        setIndex((prevIndex) => prevIndex + 1);
+        console.log("index", index)
       }, speed);
-      return () => clearTimeout(timeout); // Limpiar el timeout al desmontar el componente
+
+      return () => {
+        clearTimeout(timeoutId)
+      };
     }
   }, [index, text, speed]);
 
-  return (
-    <div style={{ color, fontSize }}>
-      {visibleText}
-    </div>
-  );
-};
+  return (<>
+          <div style={{ color, fontSize }}>{displayedText}</div>
+        </>
+)};
 
 export default DDTitle;

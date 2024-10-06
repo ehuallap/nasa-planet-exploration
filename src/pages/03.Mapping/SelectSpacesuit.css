@@ -1,0 +1,29 @@
+.space-suit-container {
+    position: relative;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    
+}
+
+.suit-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    height: 70vh;
+    width: 70vw;
+}
+
+.div-suitbtn{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.suit-image{
+    height: 24rem;
+}
