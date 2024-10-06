@@ -42,7 +42,6 @@ const MisionDescription = () => {
                     : (<span style={{ textDecoration: 'none'}}><button className="button" disabled>Next</button></span>)    
             }
 
-
             </div>
             <div className="right">
                 <img src={Astronaut} className="astronaut" alt="Astronaut" width="500" height="600"></img>

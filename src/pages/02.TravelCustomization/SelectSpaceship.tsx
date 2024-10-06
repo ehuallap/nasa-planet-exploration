@@ -57,7 +57,7 @@ const SelectSpaceship = () => {
               <Carousel ref={carouselRef}  responsive={responsive} arrows={true}>
               {images.map((image, index) => (
                   <div key={index} style={{ height: '70vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                      <img src={image} alt={`Imagen ${index + 1}`} style={{ maxHeight: '100%', maxWidth: '100%', objectFit: 'cover' }} />
+                      <img src={image} className="spaceship" alt={`Imagen ${index + 1}`} style={{ maxHeight: '100%', maxWidth: '100%', objectFit: 'cover' }} />
                   </div>
               ))}
               </Carousel>

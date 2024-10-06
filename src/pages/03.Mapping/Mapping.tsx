@@ -23,12 +23,14 @@ const Mapping = () => {
 
     const { planetarySystem, currentExoplanet, setCurrentExoplanet } = useMisionStore();
 
-    const [selectedPlanet, setSelectedPlanet] = useState<string | null>(null);
 
     const navigate = useNavigate();
     const changeExoplanet = ( option : Number) => {
         console.log("anuevo exoplanet : " + option)
+        console.log("currentExoplanet mapping: ", currentExoplanet)
+        console.log("currentExoplanet mapping: ", planetarySystem)
         setCurrentExoplanet(option);
+        console.log("currentExoplanet mapping: ", currentExoplanet)
         setTimeout(() => navigate("/planet-information"), 800);
     }
 

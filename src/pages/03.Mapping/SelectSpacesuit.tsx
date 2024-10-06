@@ -8,6 +8,7 @@ import useMisionStore from '../../store/store';
 const SelectSpacesuit = () => {
     const { setSpacesuit} = useMisionStore()
     const changeSpaceSuit = (spacesuit : string) => {
+        console.log("spacesuit", spacesuit)
         setSpacesuit(spacesuit)
     }
   return (

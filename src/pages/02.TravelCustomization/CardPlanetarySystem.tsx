@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 import HoverAudio from '../../assets/sounds/navigation-digital-pop-up.wav';
 import ClickAudio from '../../assets/sounds/navigation-digital-menu-click.wav';
+import useMisionStore from '../../store/store';
 
 // Define el tipo para un exoplaneta
 type Exoplanet = {
@@ -30,18 +31,10 @@ type PlanetarySystem = {
   exoplanets: Exoplanet[];
 };
 
-// Define el tipo para el store
 type MissionStore = {
   planetarySystem: PlanetarySystem;
   setPlanetarySystem: (name: string, exoplanets: Exoplanet[]) => void;
 };
-
-// Define el store
-const useMisionStore = create<MissionStore>((set) => ({
-  planetarySystem: { name: '', exoplanets: [] },
-  setPlanetarySystem: (name: string, exoplanets: Exoplanet[]) => 
-    set({ planetarySystem: { name, exoplanets } }),
-}));
 
 // Define el tipo de props para el componente
 type CardPlanetarySystemProps = {

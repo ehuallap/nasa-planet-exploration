@@ -14,7 +14,6 @@ const DDTitle: React.FC<DDTitleProps> = ({ text, speed = 70, color = "black", fo
   const audioRef = useRef<HTMLAudioElement | null>(null);
   
   useEffect(() => {
-    console.log("user Effect")
     if (audioSrc && index === 0) {
       audioRef.current = new Audio(audioSrc);
       audioRef.current.loop = false;
@@ -23,12 +22,7 @@ const DDTitle: React.FC<DDTitleProps> = ({ text, speed = 70, color = "black", fo
 
     // Detener el audio cuando termine de escribir
     if (index >= text.length && audioRef.current) {
-      console.log("termino de escribir")
-      console.log("termino de escribir:", audioRef)
-      console.log("termino de escribir:", audioRef.current)
       audioRef.current.pause();
-      //audioRef.current.currentTime = 0; // Reiniciar el audio
-      console.log("Terminó de escribir, audio actual:", audioRef.current);
     }
 
     if (index < text.length) {
@@ -39,7 +33,6 @@ const DDTitle: React.FC<DDTitleProps> = ({ text, speed = 70, color = "black", fo
       const timeoutId = setTimeout(() => {
         setDisplayedText((prev) => prev + text[index]);
         setIndex((prevIndex) => prevIndex + 1);
-        console.log("index", index)
       }, speed);
 
       return () => {
