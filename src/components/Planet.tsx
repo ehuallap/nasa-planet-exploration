@@ -8,6 +8,8 @@ import './Planet.css'
 import exoplanetsData from '../data/exoplanets.json'
 
 
+import textu from '../assets/textures/trappist1-b.png'
+
 interface PlanetProps {
     top: string;
     left: string;
@@ -113,37 +115,39 @@ const Planet: React.FC<PlanetProps> = ({ top, left, size, name, onClick }) => {
       }
     }
 
-    const [planets, setPlanets] = useState<Object[]>([]);
+    const [planets, setPlanets] = useState<Object[]>(exoplanetsData);
     const [planetObject, setPlanetObject] = useState<PlanetClass | null>(null);
-    setPlanets
-    useEffect(() => {
+    // useEffect(() => {
 
-        // const fetchData = async () => {
-        //     try {
-        //       const response = await fetch('/../src/data/exoplanets.json');
-        //       if (!response.ok) {
-        //         throw new Error('Network response was not ok');
-        //       }
+    //     const fetchData = async () => {
+    //         try {
+    //           const response = await fetch('/../src/data/exoplanets.json');
+    //           if (!response.ok) {
+    //             throw new Error('Network response was not ok');
+    //           }
 
-        //         const jsonData: PlanetClass[] = await response.json();
-
-        //         setPlanets(jsonData);
-        //     } catch (err) {
-        //           console.log(err instanceof Error ? err.message : 'Unknown error');
-        //     }
-        // };
+    //             const jsonData: PlanetClass[] = await response.json();
+    //             console.log("jsonData", jsonData)
+    //             //setPlanets(jsonData);
+    //         } catch (err) {
+    //               console.log(err instanceof Error ? err.message : 'Unknown error');
+    //         }
+    //     };
       
-        // fetchData();
-        setPlanets(exoplanetsData)
-    }, [])
+    //     //fetchData();
+    //     console.log("exoplanetsData", exoplanetsData)
+    //     setPlanets(exoplanetsData)
+    //     console.log("after set planets", planets)
+    // }, [])
 
     useEffect( () => {
 
         const getPlanetByName = (name: string): PlanetClass | null => {
+            console.log("planets ", planets)
             const planetFound: any = planets.find(planet => planet["name"] == name);
 
             if (planetFound) {
-                console.log(planetFound)
+                console.log("planet foound", planetFound)
                 return planetFound;
             } else {
                 console.log("error");
@@ -161,6 +165,7 @@ const Planet: React.FC<PlanetProps> = ({ top, left, size, name, onClick }) => {
     }, [planets]);
 
     useEffect(() => {
+        if(planetObject){
         const mount = mountRef.current;
         const scene = new THREE.Scene();
 
@@ -182,6 +187,8 @@ const Planet: React.FC<PlanetProps> = ({ top, left, size, name, onClick }) => {
         directionalLight.position.set(3, 2, 1); // Luz fija desde un solo lado
         scene.add(directionalLight);
 
+        camera.position.z = 2.5;
+
         const loader = new THREE.TextureLoader();
         if (mountRef.current) {
             mountRef.current.addEventListener('click', onMouseClick1);
@@ -191,13 +198,18 @@ const Planet: React.FC<PlanetProps> = ({ top, left, size, name, onClick }) => {
         mount!.addEventListener('mousemove', onMouseMoveHandler)
         // Cargar textura de la Tierra
 
-        let textureURL: string = "";
+        
+        //../assets/textures/trappist1-b.png
+        //console.log("planetObject.url_asset_texture", planetObject.url_asset_texture)
+        const textureURL = new URL(`../assets/textures/${planetObject.url_asset_texture}`, import.meta.url).href
+        // let textureURL: string = "";
+        // if (planetObject) {
+        //         textureURL = `../src/assets/textures/${planetObject!.url_asset_texture}`;
+        // } else {
+        //     textureURL = "../src/assets/textures/centauri-b.png"
+        // }
+        //console.log("textureURL", textureURL)
 
-        if (planetObject) {
-            textureURL = `../src/assets/textures/${planetObject!.url_asset_texture}`;
-        } else {
-            textureURL = "../src/assets/textures/centauri-b.png"
-        }
 
         loader.load(textureURL, (earthTexture) => {
             const geometry = new THREE.SphereGeometry(1, 64, 64);
@@ -216,18 +228,18 @@ const Planet: React.FC<PlanetProps> = ({ top, left, size, name, onClick }) => {
 
             // Cargar la textura de nubes
             loader.load(cloudTexture, (cloudTexture) => {
-                const cloudGeometry = new THREE.SphereGeometry(1.02, 64, 64); // Ligeramente más grande que la Tierra
-                const cloudMaterial = new THREE.MeshStandardMaterial({
-                    map: cloudTexture,
-                    transparent: true, // Para que solo las nubes sean visibles
-                    opacity: 0.2, // Ajustar la opacidad de las nubes
-                });
+                // const cloudGeometry = new THREE.SphereGeometry(1.02, 64, 64); // Ligeramente más grande que la Tierra
+                // const cloudMaterial = new THREE.MeshStandardMaterial({
+                //     map: cloudTexture,
+                //     transparent: true, // Para que solo las nubes sean visibles
+                //     opacity: 0.2, // Ajustar la opacidad de las nubes
+                // });
 
-                // Esfera para las nubes
-                const cloudSphere = new THREE.Mesh(cloudGeometry, cloudMaterial);
-                scene.add(cloudSphere);
+                // // Esfera para las nubes
+                // const cloudSphere = new THREE.Mesh(cloudGeometry, cloudMaterial);
+                // scene.add(cloudSphere);
 
-                camera.position.z = 2.5;
+                
 
                 // Animación
                 const animate = () => {
@@ -235,7 +247,7 @@ const Planet: React.FC<PlanetProps> = ({ top, left, size, name, onClick }) => {
 
                     // Mantener el giro automático del planeta y las nubes con velocidades distintas
                     earthSphere.rotation.y += 0.0007; // Velocidad del planeta
-                    cloudSphere.rotation.y += 0.001; // Velocidad de las nubes, más rápida
+                    //cloudSphere.rotation.y += 0.001; // Velocidad de las nubes, más rápida
 
                     renderer.render(scene, camera);
                 };
@@ -255,7 +267,7 @@ const Planet: React.FC<PlanetProps> = ({ top, left, size, name, onClick }) => {
 
                     // Limpiar objetos de Three.js
                     scene.remove(earthSphere);
-                    scene.remove(cloudSphere);
+                    //scene.remove(cloudSphere);
                     renderer.dispose();
                     const canvas = renderer.domElement;
                     if (canvas && mount!.contains(canvas)) {
@@ -264,7 +276,7 @@ const Planet: React.FC<PlanetProps> = ({ top, left, size, name, onClick }) => {
                 };
             });
         });
-
+    
         return () => {
             if (mountRef.current) {
                 mountRef.current.removeEventListener('click', onMouseClick1);
@@ -272,6 +284,7 @@ const Planet: React.FC<PlanetProps> = ({ top, left, size, name, onClick }) => {
             }
             renderer.dispose();
         };
+    }
         
     }, [planetObject]);
 
