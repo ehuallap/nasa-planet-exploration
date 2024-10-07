@@ -27,6 +27,8 @@ interface ExoplanetInfo {
   // ]
 }
 
+import Exoplanet from '../pages/02.TravelCustomization/CardPlanetarySystem'
+
 const useMisionStore = create((set : any) => ({
   name : "",
   planetarySystem : {
@@ -51,7 +53,7 @@ const useMisionStore = create((set : any) => ({
       temperature: "Unknown",
       description: "Unknown",
       url_asset_texture:"centauri-b.png",
-      url_video:"",
+      url_videos: [],
       ref: "",
       icons : [],
       unlocked: false,
@@ -60,7 +62,7 @@ const useMisionStore = create((set : any) => ({
   indexExoplanet : 1,
 
   setName: (newName : string) => set({name: newName}),
-  setPlanetarySystem: (name : string, exoplanets : []) => set({planetarySystem: {
+  setPlanetarySystem: (name : string, exoplanets : Object[]) => set({planetarySystem: {
     name: name,
     exoplanets: exoplanets 
   }}),

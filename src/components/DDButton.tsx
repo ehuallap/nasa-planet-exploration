@@ -2,7 +2,14 @@ import { useRef } from "react";
 import ButtonAudio from '../assets/sounds/navigation-digital-menu-click.wav'
 import { useNavigate } from "react-router-dom";
 
-const DDButton = ({ href, onClick, className, children,  }) => {
+interface DDButtonProps {
+  href?: string;
+  onClick?: Function;
+  className?: string;
+  children?: React.ReactNode;
+}
+
+const DDButton : React.FC<DDButtonProps> = ({ href, onClick, className, children }) => {
     const audioRef = useRef(null);
     const navigate = useNavigate();
     const handleClick = () => {

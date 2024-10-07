@@ -12,17 +12,23 @@ import useMisionStore from '../../store/store';
 type Exoplanet = {
   id: number;
   name: string;
+  subtitle: string;
   solar_system: string;
   year: string;
-  distance_ligth_years: string;
   type: string;
+  type_discover: string;
+  distance_ligth_years: string;
   size: string;
   mass: string;
   orbit_time: string;
   habitable: string;
   temperature: string;
+  description: string;
   url_asset_texture: string;
-  url_video: string;
+  url_videos: string[];
+  icons: Object[];
+  unlocked: boolean;
+  explored: boolean;
 };
 
 // Define el tipo para el estado del sistema planetario
