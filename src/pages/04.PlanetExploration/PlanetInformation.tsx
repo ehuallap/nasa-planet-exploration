@@ -172,7 +172,9 @@ function PlanetInformation() {
             </div>
         </DDModal>
         {
-          currentExoplanet && currentExoplanet.explored && currentExoplanet.icons.length > 0 ? currentExoplanet.icons.map((icon, index) => {
+          currentExoplanet && !currentExoplanet.unlocked? 
+            currentExoplanet.explored ? 
+            currentExoplanet.icons.map((icon, index) => {
             return (
               <DDModal 
               key={index}
@@ -188,9 +190,34 @@ function PlanetInformation() {
                     </div>
                 </DDModal>
             )
-          }) : <></>
+            }) : <></> 
+          : currentExoplanet.icons.map((icon, index)=>{
+            return (icon.correct && <DDModal 
+            key={index}
+              position={positions[index]}>
+                  <div className=''>
+                      <ModalIcon
+                          onClick={()=>{}}
+                          darker={false}
+                          imagen={icon.icon}
+                          title={icon.title}
+                          texto={icon.description}
+                      ></ModalIcon>
+                  </div>
+              </DDModal>)
+          })
         }
-        { currentExoplanet && !currentExoplanet.explored ? 
+        { currentExoplanet &&  !currentExoplanet.unlocked && currentExoplanet.explored ? 
+        <DDModal
+        position={{ top: '50%', left: '80%' }}>
+          <div className='div-question'>
+            <p className='select-text'>select the most important features of the explored exoplanet</p>
+            <div>
+              <DDButton onClick={()=>validateIcons()}>Accept</DDButton>
+            </div>
+          </div>
+        </DDModal>
+        :
         <DDModal 
         position={{ top: '50%', left: '80%' }}>
             <div className='rigth'>
@@ -210,16 +237,7 @@ function PlanetInformation() {
                 </div>
             </div>
         </DDModal>
-        :
-        <DDModal
-        position={{ top: '50%', left: '80%' }}>
-          <div className='div-question'>
-            <p className='select-text'>Select the most important characteristic of the exoplanet you have explored</p>
-            <div>
-              <DDButton onClick={()=>validateIcons()}>Accept</DDButton>
-            </div>
-          </div>
-        </DDModal>
+        
         }
         
         <DDModal 
@@ -246,7 +264,7 @@ function PlanetInformation() {
         <DDModal
         position={{ top: '10%', left: '80%' }}>
           <div className='lock'>
-            Locked
+            Unlocked
           </div>
         </DDModal>
         }

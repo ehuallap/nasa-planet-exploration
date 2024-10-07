@@ -25,5 +25,9 @@
 }
 
 .suit-image{
-    height: 24rem;
+    height: 20rem;
+}
+
+.suit-text{
+    font-size: 0.8rem;
 }

@@ -51,7 +51,7 @@ const Mapping = () => {
             />
             <p className='title-exoplanet'>Which exoplanet should I explore?</p>
             {planetarySystem.exoplanets.map((exoplanet, index)=>{
-                return <Planet top={position[index].top} left={position[index].left} size={position[index].size} name={exoplanet.name} onClick={() => changeExoplanet(0)} />
+                return <Planet top={position[index].top} left={position[index].left} size={position[index].size} name={exoplanet.name} onClick={() => changeExoplanet(index)} />
             })}
             {/* <Planet top="40%" left='46%' size={180} name="Trappist-1 a" onClick={() => changeExoplanet(0)} />
             <Planet top="15%" left='20%' size={150} name='Proxima Centauri b' onClick={() => changeExoplanet(1)} />

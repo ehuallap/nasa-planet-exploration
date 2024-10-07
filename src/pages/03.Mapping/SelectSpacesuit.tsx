@@ -17,14 +17,17 @@ const SelectSpacesuit = () => {
             <div className='suit-grid'>
                 <div className='div-suitbtn'>
                     <img className='suit-image' src={SpaceSuit4} alt="Spacesuit"/>
+                    <p className='suit-text'>Futuristic suit combines ultralight materials with advanced technology</p>
                     <DDButton href="/video" onClick={()=>changeSpaceSuit(SpaceSuit4.toString())}>Choose</DDButton>
                 </div>
                 <div className='div-suitbtn'>
                     <img className='suit-image' src={SpaceSuit1} alt="Spacesuit"/>
+                    <p className='suit-text'>Its imposing appearance, reinforced with layers of protection, ensures survival against toxic gases and electrical discharges.</p>
                     <DDButton href="/video" onClick={()=>changeSpaceSuit(SpaceSuit1.toString())}>Choose</DDButton>
                 </div>
                 <div className='div-suitbtn'>
                     <img className='suit-image' src={SpaceSuit5} alt="Spacesuit"/>
+                    <p className='suit-text'>Rugged looking suit is built to withstand intense temperatures</p>
                     <DDButton href="/video" onClick={()=>changeSpaceSuit(SpaceSuit5.toString())}>Choose</DDButton>
                 </div>
             </div>

@@ -25,7 +25,6 @@ function App() {
           <Route path="/mapping" element={<Mapping />} />
           <Route path="/planet-information/" element={<PlanetInformation />} />
           <Route path="/video" element={<Video/>} />
-          <Route path="/exoplanet-types" element={<ExoplanetTypes />} />
         </Routes>
       </div>
     </Router>
