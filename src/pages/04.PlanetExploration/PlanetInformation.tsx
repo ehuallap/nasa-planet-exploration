@@ -13,6 +13,8 @@ import cloudTexture from '../../assets/textures/cloud-centauri-b.jpg'; // Import
 import PlanetAudio  from '../../assets/sounds/space-planet.mp3'
 import BackgroundAudio from '../../components/BackgroundAudio';
 import SelectSpacesuit from '../03.Mapping/SelectSpacesuit';
+import SelectFeaturesAudio from '../../assets/sayings/select-features.mp3'
+
 
 function PlanetInformation() {
   const { currentExoplanet, indexExoplanet } = useMisionStore();
@@ -29,9 +31,9 @@ function PlanetInformation() {
   const [grats, setGrats] = useState(false);
   
   const validateIcons = () => {
-    console.log("chekeo", currentExoplanet.icons)
     for (let index = 0; index < currentExoplanet.icons.length; index++){
-      if(currentExoplanet.icons[index].correct == true && (currentExoplanet.icons[index].selected == false ||currentExoplanet.icons[index].selected == undefined)){
+      if((currentExoplanet.icons[index].correct == true && (currentExoplanet.icons[index].selected == false || currentExoplanet.icons[index].selected == undefined)) ||
+      (currentExoplanet.icons[index].correct == false && (currentExoplanet.icons[index].selected == true))){
         setError(true)
         setTimeout(()=>{
           setError(false)
@@ -144,11 +146,22 @@ function PlanetInformation() {
     { top: "64%", left: "50%" }
   ]
   
+  const audioRef = useRef(null);
+    useEffect(() => {
+      if(currentExoplanet.explored){
+        const audioElement = audioRef.current;
+        if (audioElement) {
+          audioRef.current.volume = 1;
+          audioElement.play();
+        }
+      }
+    }, [currentExoplanet.explored]);
 
   return (
     <div>
       <div ref={mountRef} style={{ width: '100vw', height: '100vh', overflow: 'hidden' }} />
         <BackgroundAudio href={PlanetAudio}></BackgroundAudio>
+        <audio ref={audioRef} src={SelectFeaturesAudio}/>
         <DDModal 
         position={{ top: '15%', left: '20%' }}>
             <div className='header-title'>
