@@ -4,3 +4,36 @@
   align-items: center;
   padding: 1rem 0rem;
 }
+
+.spaceship-div{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  color: white;
+}
+.spaceship-p-con {
+  width: 70vw;
+  min-height: 7.5rem;
+}
+.spaceship-p{
+  color: white;
+  text-align: center;
+  line-height: 1.4rem;
+}
+
+.spaceship-img {
+  transform: scaleX(-1);
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(30px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

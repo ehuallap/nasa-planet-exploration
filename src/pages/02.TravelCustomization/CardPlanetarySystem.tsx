@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 import HoverAudio from '../../assets/sounds/navigation-digital-pop-up.wav';
 import ClickAudio from '../../assets/sounds/navigation-digital-menu-click.wav';
+import useMisionStore from '../../store/store';
 
 // Define el tipo para un exoplaneta
 type Exoplanet = {
@@ -30,18 +31,10 @@ type PlanetarySystem = {
   exoplanets: Exoplanet[];
 };
 
-// Define el tipo para el store
 type MissionStore = {
   planetarySystem: PlanetarySystem;
   setPlanetarySystem: (name: string, exoplanets: Exoplanet[]) => void;
 };
-
-// Define el store
-const useMisionStore = create<MissionStore>((set) => ({
-  planetarySystem: { name: '', exoplanets: [] },
-  setPlanetarySystem: (name: string, exoplanets: Exoplanet[]) => 
-    set({ planetarySystem: { name, exoplanets } }),
-}));
 
 // Define el tipo de props para el componente
 type CardPlanetarySystemProps = {
@@ -49,19 +42,24 @@ type CardPlanetarySystemProps = {
   text: string;
 };
 
-const CardPlanetarySystem: React.FC<CardPlanetarySystemProps> = ({ clas, text }) => {
+const CardPlanetarySystem = ({clas, slug, text, blocked}) => {
   const audio = new Audio(HoverAudio);
   const audioClick = new Audio(ClickAudio);
-  const { setPlanetarySystem } = useMisionStore(); // Ahora TypeScript conoce el tipo
-  const navigate = useNavigate();
-
-  const changePlanetarySystem = (option: string) => {
-    audioClick.play();
-    const filtered = exoplanetsData.filter((item) => item.solar_system === option);
-    
-    setPlanetarySystem("Planetary System : " + option, filtered);
-    navigate("/select-spaceship");
-  };
+    const { planetarySystem, setPlanetarySystem } = useMisionStore();
+    const navigate = useNavigate();
+    const changePlanetarySystem = ( option : string) => {
+      if(!blocked){
+        audioClick.play()
+        const filtered = exoplanetsData.filter((item) => item.solar_system === option)
+        const mapped = filtered.map(obj => ({
+          ...obj,
+          unlocked: false ,
+          explored: false,
+        }));
+        setPlanetarySystem(slug, mapped);
+        navigate("/select-spaceship")
+      }
+    }
 
   const handleMouseEnter = () => {
     audio.play();  // Reproduce el audio
@@ -79,6 +77,7 @@ const CardPlanetarySystem: React.FC<CardPlanetarySystemProps> = ({ clas, text })
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
+      {blocked && <p className='blocked-text'>Coming soon</p>}
       <p className="text-overlay">{text}</p>
     </div>
   );

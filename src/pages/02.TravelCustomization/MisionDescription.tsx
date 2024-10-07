@@ -1,9 +1,15 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import './MisionDescription.css';
 import Astronaut from '../../assets/astronauta.png'
 import DDTitle from "../../components/DDTitle";
 import useMisionStore from "../../store/store";
+import BackgroundAudio from "../../components/BackgroundAudio";
+import Audio  from '../../assets/sounds/pista.mp3'
+import Typing from '../../assets/sounds/typing.wav'
+import Welcome from '../../assets/sayings/welcome.mp3'
+
+
 const MisionDescription = () => {
 
     const [name, setNameLocal] = useState("");
@@ -17,7 +23,7 @@ const MisionDescription = () => {
 
     setTimeout(()=>{
         setText3(true);
-    }, 10000);
+    }, 11000);
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setNameLocal(event.target.value);
@@ -28,23 +34,33 @@ const MisionDescription = () => {
         setName(name);
     }
 
+    const audioRef = useRef(null);
+
+    useEffect(() => {
+        const audioElement = audioRef.current;
+        if (audioElement) {
+            audioRef.current.volume = 1;
+            audioElement.play();
+        }
+    }, []);
+
     return (
         <div className='container-mision'>
+            <audio ref={audioRef} src={Welcome}/>
             <div className="left">
-                { text1 && <DDTitle text="Welcome to SOLUTI's Mission" fontSize='35px' color='white'></DDTitle>}
-                { text2 && <DDTitle text="You are going to be part of the most wonderful adventure, your are going to be the traveler of the future" fontSize='30px' color='white'></DDTitle>}
-                { text3 && <DDTitle text="Enter your name: " fontSize='30px' color='white'></DDTitle>}
+                { text1 && <DDTitle text="Welcome Space Walker" fontSize='35px' color='white' audioSrc={Typing}></DDTitle>}
+                { text2 && <DDTitle text="You have been selected to be part of the mission 'Lost Worlds', you'll have to explore the strangest and most peculiar exoplanets in the Milky Way" fontSize='30px' color='white' audioSrc={Typing}></DDTitle>}
+                { text3 && <DDTitle text="State your name now and prepare for the mission: " fontSize='30px' color='white' audioSrc={Typing}></DDTitle>}
                 <input type="text" className="input" onChange={handleInputChange}></input>
                 { name.length > 0 ? (<Link to="/select-planetary-system" style={{ textDecoration: 'none' }} onClick={addNameToStore}><button className="button">Next</button></Link>)
                     : (<span style={{ textDecoration: 'none'}}><button className="button" disabled>Next</button></span>)    
             }
 
-
             </div>
             <div className="right">
                 <img src={Astronaut} className="astronaut" alt="Astronaut" width="500" height="600"></img>
             </div>
-
+            <BackgroundAudio href={Audio}></BackgroundAudio>
         </div>
     );
 }

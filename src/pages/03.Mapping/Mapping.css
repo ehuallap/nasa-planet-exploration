@@ -1,11 +1,40 @@
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    object-fit: cover; /* Maintain aspect ratio */
+    z-index: 2; /* Lower z-index for background */
+  }
 .container-mapping{
+
     background: rgb(7, 1, 36);
-    background-image: url('../../assets/astronauta-vista-espacio.png');
+    position: relative;
     background-size: cover;
     background-position: center;
     width: 100vw;
     height: 100vh;
+
+    /* background: rgb(7, 1, 36);   
+    background-image: url('../../assets/astronauta-vista-espacio.png');
+    background-size: cover;
+    background-position: center;
+    width: 100vw;
+    height: 100vh; */
 }
+
+.clickable-image {
+    position: absolute;
+    width: 50px; /* Fixed width */
+    height: 50px; /* Fixed height */
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .clickable-image:hover {
+    transform: scale(1.1);
+  }
 
 .exoplanets-mapping {
     display: grid;
@@ -13,4 +42,13 @@
     grid-template-rows: repeat(3, 1fr);
     padding: 5rem 35rem 8rem 5rem;
     gap: 10rem;
+}
+
+.title-exoplanet{
+  position: fixed;
+  left: 65%;
+  top: 5%;
+  color: rgb(255, 157, 0);
+  z-index: 100000;
+  font-size: 2.2rem;
 }
