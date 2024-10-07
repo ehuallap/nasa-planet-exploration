@@ -97,7 +97,7 @@
                 "title" : "Freeze",
                 "icon" : "freeze.png",
                 "description" : "The side opposite its star has large amounts of ice on its surface, including icy mountains.",
-                "correct": true
+                "correct": false
             }
         ]
     },
@@ -141,7 +141,7 @@
                 "title" : "Freeze",
                 "icon" : "freeze.png",
                 "description" : "The coldest areas of the planet are likely to have ice, especially in areas far from direct radiation",
-                "correct": false
+                "correct": true
             },
             {
                 "title" : "Rocks",
