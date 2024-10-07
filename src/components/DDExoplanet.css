@@ -1,0 +1,66 @@
+.exoplanet-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    cursor: pointer; /* Cambia el cursor para indicar que es un botón */
+}
+
+.exoplanet-circle {
+    width: 320px;
+    height: 320px;
+    background-image: url('../assets/exoplanet.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: brightness(100%);
+    transition: filter 0.4s ease, transform 0.4s ease; /* Añadir transición para escala y brillo */
+    animation: pulsate 1.5s infinite; /* Aplicar animación pulsante */
+}
+
+@keyframes pulsate {
+    0%, 100% {
+        filter: brightness(100%);
+        transform: scale(1);
+    }
+    50% {
+        filter: brightness(70%);
+        transform: scale(1.1);
+    }
+}
+
+.exoplanet-circle.hovered {
+    filter: brightness(70%);
+    transform: scale(1.1);
+    transition: filter 0.4s ease, transform 0.4s ease;
+    animation: none;
+}
+
+@keyframes text-pulsate {
+    0%, 60%, 100% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 0.8;
+    }
+}
+
+.exoplanet-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centrar el texto sobre el círculo */
+    font-size: 25px;
+    color: white;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.5s ease; /* Transición suave para la opacidad */
+    animation: text-pulsate 1.5s infinite;
+}
+
+.exoplanet-text.fade-in {
+    animation: none;
+    opacity: 0.8;
+    transition: opacity 0.5s ease; /* Suavizar transición de opacidad */
+}

@@ -34,7 +34,6 @@ const Mapping = () => {
 
     return (
         <div className='container-mapping'>
-
             <img
                 src={Background}
                 alt="Background"
