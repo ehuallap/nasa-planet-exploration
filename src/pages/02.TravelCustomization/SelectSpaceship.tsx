@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Spaceship2 from '../../assets/spaceships/nave-2.png'
 import Spaceship6 from '../../assets/spaceships/nave-6.png'
 import Spaceship8 from '../../assets/spaceships/nave-8.png'
@@ -8,6 +8,8 @@ import DDButton from "../../components/DDButton";
 import './SelectSpaceship.css'
 import useMisionStore from "../../store/store";
 import CustomBackground from "../../components/CustomBackground";
+import ChooseSpaceshipAudio from '../../assets/sayings/choose-spaceship.mp3'
+
 const images = [
   Spaceship2,
   Spaceship6,
@@ -52,11 +54,18 @@ const SelectSpaceship = () => {
     }
     };
 
-    const { planetarySystem } = useMisionStore();
-
+    const audioRef = useRef(null);
+    useEffect(() => {
+        const audioElement = audioRef.current;
+        if (audioElement) {
+            audioRef.current.volume = 1;
+            audioElement.play();
+        }
+    }, []);
     return (
           <CustomBackground>
             <div>
+            <audio ref={audioRef} src={ChooseSpaceshipAudio}/>
               <div className="text-title">
                 <p>Choose your spaceship</p>
               </div>

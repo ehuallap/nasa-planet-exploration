@@ -1,37 +1,50 @@
 [
     {
         "id": 0,
-        "name": "Proxima Centauri b",
-        "subtitle": "",
-        "solar_system": "Alpha Centauri",
+        "name": "Trappist-1 b",
+        "subtitle": "A potentially rocky world, larger than Earth",
+        "solar_system": "Trappist-1",
         "year": "2016",
-        "distance_ligth_years": "4.2",
         "type": "Super Earth",
-        "size": "1.03 Earths",
-        "mass": "1.07 Earths",
-        "orbit_time": "11 days aprox.",
+        "type_discover": "Transit",
+        "distance_ligth_years": "40.54",
+        "size": "1.116 Earths",
+        "mass": "1.37 Earths",
+        "orbit_time": "1.5 days",
         "habitable" : "no",
-        "temperature": "-39°C",
-        "description": "Planeta rocoso y frío bañado en luz roja, ubicada en zona habitable. Con una atmosfera misteriosa y con indicios de agua sólida en su superficie. Con posibilidades de paisajes montañosos cubiertos de minerales exóticos.",
-        "url_asset_texture":"centauri-b.png",
-        "url_video": "https://www.youtube.com/watch?v=CQMaJ8Gc-Z0",
+        "temperature": "-227°C",
+        "description": "TRAPPIST-1 b is a rocky exoplanet orbiting the ultra-cool dwarf star TRAPPIST-1, located approximately 40 light-years from Earth. With a mass of approximately 1.374 times that of Earth and a size of 1.116 times that of Earth, this planet completes one orbit around its star in 1.51 days. It was discovered in 2016 as part of a seven-planet system.",
+        "url_asset_texture":"trappist1-b.png",
+        "url_videos": ["https://www.youtube.com/watch?v=9pCfPCB1Njw"],
         "icons" : [
             {
                 "title" : "Rocks",
                 "icon" : "rock.png",
-                "description" : "A cold, rocky planet bathed in red light, located in a habitable zone.",
+                "description" : "Mostly rocky surface, with silicate compounds, similar to the terrestrial planets.",
                 "correct": true
             },
             {
-                "title" : "Atmosphere",
-                "icon" : "atmosphere.png",
-                "description" : "The exoplanet presents a misteryous atmosphere",
+                "title" : "Lava",
+                "icon" : "fire.png",
+                "description" : "Its proximity to the star makes it an extremely hot planet, with temperatures that could melt rocks.",
                 "correct": true
             },
             {
-                "title" : "Water",
-                "icon" : "gota.png",
-                "description" : "The exoplanet presents water in its surface",
+                "title" : "High temperature",
+                "icon" : "volcan.png",
+                "description" : "There is speculation that there may be active volcanoes, which would imply possible lava flows on the surface.",
+                "correct": true
+            },
+            {
+                "title" : "Vegetation",
+                "icon" : "plants.png",
+                "description" : "There is speculation that there could be wild flora within the planet",
+                "correct": false
+            },
+            {
+                "title" : "Freeze",
+                "icon" : "freeze.png",
+                "description" : "There is red ice caused by low temperatures and red radiation from its star",
                 "correct": false
             }
         ]
@@ -39,80 +52,174 @@
     },
     {
         "id": 1,
-        "name": "Proxima Centauri c",
-        "subtitle": "",
-        "solar_system": "Alpha Centauri",
-        "year": "2020",
-        "distance_ligth_years": "4.24",
-        "type": "Potential Mini Neptune",
-        "size": "2.2 Earths",
-        "mass": "6 Earths",
-        "orbit_time": "5.2 years",
+        "name": "Trappist-1 c",
+        "subtitle": "A potentially rocky world, larger than Earth",
+        "solar_system": "Trappist-1",
+        "year": "2016",
+        "type": "Super Earth",
+        "type_discover": "Transit",
+        "distance_ligth_years": "40.54",
+        "size": "1.097 Earths",
+        "mass": "1.31 Earths",
+        "orbit_time": "2.4 days",
         "habitable" : "no",
-        "temperature": "-234°C",
-        "description": "",
-        "url_asset_texture":"centauri-c.jpg",
-        "url_video":"https://www.youtube.com/watch?v=MDUtGS41uGY",
+        "temperature": "-69°C",
+        "description": "TRAPPIST-1 c is a rocky exoplanet that also orbits the ultra-cool dwarf star TRAPPIST-1, located 40 light-years from Earth. With a mass of 1,310 times that of Earth and a size of 1,097 times that of Earth, this planet completes an orbit in 2.42 days.",
+        "url_asset_texture":"trappist1-c.png",
+        "url_videos": ["https://www.youtube.com/watch?v=CQMaJ8Gc-Z0", 
+    "https://www.youtube.com/watch?v=MDUtGS41uGY"],
         "icons" : [
             {
                 "title" : "Rocks",
                 "icon" : "rock.png",
-                "description" : "A rocky, icy planet orbiting far from its star, making it a barren, frozen planet"
+                "description" : "Mostly rocky surface, with silicate compounds, similar to the terrestrial planets.",
+                "correct": true
             },
             {
-                "title" : "Ice",
+                "title" : "Lava",
+                "icon" : "fire.png",
+                "description" : "Its proximity to the star makes it an extremely hot planet, with temperatures that could melt rocks.",
+                "correct": true
+            },
+            {
+                "title" : "Rainsstorm",
+                "icon" : "rainstorm.png",
+                "description" : "The presence of thunderstorms and rain is frequent on the exoplanet",
+                "correct": false
+            },
+            {
+                "title" : "Vegetation",
+                "icon" : "plants.png",
+                "description" : "There is speculation that there could be wild flora within the planet",
+                "correct": false
+            },
+            {
+                "title" : "Freeze",
                 "icon" : "freeze.png",
-                "description" : "The planet has ice-covered mountains but no traces of liquid water"
-            }
-        ]
-    },
-    {
-        "id": 2,
-        "name": "Proxima Centauri d",
-        "subtitle": "",
-        "solar_system": "Alpha Centauri",
-        "year": "2022",
-        "distance_ligth_years": "4.24",
-        "type": "Rocky",
-        "size": "1.3 Earths",
-        "mass": "0.26 Earths",
-        "orbit_time": "5 days aprox.",
-        "habitable" : "no",
-        "temperature": "-40°C",
-        "description": "",
-        "url_asset_texture":"centauri-d.avif",
-        "url_video":"https://www.youtube.com/watch?v=kaOTDkBfPZM",
-        "icons" : [
-            {
-                "title" : "Rocks",
-                "icon" : "rock.png",
-                "description" : "A small, cold, rocky planet located beyond the habitable zone of its star",
-                "selected" : true
-            },
-            {
-                "title" : "Wind",
-                "icon" : "wind.png",
-                "description" : "The wind is constant due to the lack of a dense atmosphere"
+                "description" : "The side opposite its star has large amounts of ice on its surface, including icy mountains.",
+                "correct": true
             }
         ]
     },
     {
         "id": 3,
-        "name": "Tau Ceti g",
-        "subtitle": "",
-        "solar_system": "Tau Ceti",
-        "year": "2017",
-        "distance_ligth_years": "11.7",
-        "type": "Super Earth",
-        "size": "1.5 - 2 Earths",
-        "mass": "4.29 Earths",
-        "orbit_time": "5.2 years aprox.",
-        "habitable" : "yes",
-        "temperature": "-",
-        "description": "",
-        "url_asset_texture":"tau-ceti-g.avif",
-        "url_video":""
+        "name": "Trappist-1 d",
+        "subtitle": "A rocky world, outside our Solar System",
+        "solar_system": "Trappist-1",
+        "year": "2016",
+        "type": "Terrestrial",
+        "type_discover": "Transit",
+        "distance_ligth_years": "40.54",
+        "size": "1.097 Earths",
+        "mass": "0.39 Earths",
+        "orbit_time": "4 days",
+        "habitable" : "no",
+        "temperature": "-15°C",
+        "description": "TRAPPIST-1 d is another rocky exoplanet that is part of the TRAPPIST-1 system, located 40 light-years from Earth. With an estimated mass of 0.388 times that of Earth and a size of 0.784 times that of Earth, TRAPPIST-1 d completes its orbit in 4.05 days.",
+        "url_asset_texture":"trappist1-d.png",
+        "url_videos": ["https://www.youtube.com/watch?v=ABA2wXOWv8M"],
+        "icons" : [
+            {
+                "title" : "Winds",
+                "icon" : "wind.png",
+                "description" : "Due to the interaction between its atmosphere and stellar radiation, there could be strong winds.",
+                "correct": true
+            },
+            {
+                "title" : "Fire",
+                "icon" : "fire.png",
+                "description" : "Its proximity to the star makes it an extremely hot planet, with temperatures that could melt rocks.",
+                "correct": false
+            },
+            {
+                "title" : "Rainsstorm",
+                "icon" : "rainstorm.png",
+                "description" : "The presence of thunderstorms and rain is frequent on the exoplanet",
+                "correct": false
+            },
+            {
+                "title" : "Freeze",
+                "icon" : "freeze.png",
+                "description" : "The coldest areas of the planet are likely to have ice, especially in areas far from direct radiation",
+                "correct": true
+            },
+            {
+                "title" : "Rocks",
+                "icon" : "rock.png",
+                "description" : "Presence of high rocky mountains with rock peaks, some even covered in ice",
+                "correct": true
+            }
+        ]
     },
+    {
+        "id": 4,
+        "name": "Trappist-1 e",
+        "subtitle": "A rocky world, outside our Solar System",
+        "solar_system": "Trappist-1",
+        "year": "2017",
+        "type": "Terrestrial",
+        "type_discover": "Transit",
+        "distance_ligth_years": "40.54",
+        "size": "0.92 Earths",
+        "mass": "0.69 Earths",
+        "orbit_time": "6.1 days",
+        "habitable" : "no",
+        "temperature": " °C",
+        "description": "TRAPPIST-1 e is a rocky exoplanet orbiting the star TRAPPIST-1 at a distance of approximately 40 light-years from Earth. With a mass of 0.692 times that of Earth and a size of 0.910 times that of Earth, this planet completes its orbit in 6.1 days. TRAPPIST-1 e is located in the habitable zone of the star, which increases the possibility of the existence of liquid water.",
+        "url_asset_texture":"trappist1-e.png",
+        "url_videos": ["https://www.youtube.com/watch?v=kaOTDkBfPZM"],
+        "icons" : [
+            {
+                "title" : "Thunder",
+                "icon" : "thunder.png",
+                "description" : "Thunderstorms are quite common on its surface due to the sudden changes in temperature.",
+                "correct": false
+            },
+            {
+                "title" : "Fire",
+                "icon" : "fire.png",
+                "description" : "Its proximity to the star makes it an extremely hot planet, with temperatures that could melt rocks.",
+                "correct": false
+            },
+            {
+                "title" : "Clouds",
+                "icon" : "clouds.png",
+                "description" : "The planet could have a clear sky with sporadic clouds or cloudy areas",
+                "correct": true
+            },
+            {
+                "title" : "Water",
+                "icon" : "gota.png",
+                "description" : "one of the most promising planets in terms of the possibility of liquid oceans or bodies of water on its surface",
+                "correct": true
+            },
+            {
+                "title" : "Rocks",
+                "icon" : "rock.png",
+                "description" : "Is located in the habitable zone of its system. This suggests the possibility of a solid surface composed of silicates and common minerals.",
+                "correct": true
+            }
+        ]
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     {
         "id": 4,
         "name": "Tau Ceti h",

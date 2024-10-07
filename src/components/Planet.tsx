@@ -143,7 +143,7 @@ const Planet: React.FC<PlanetProps> = ({ top, left, size, name, onClick }) => {
                 console.log(planetFound)
                 return planetFound;
             } else {
-                console.log("hola");
+                console.log("error");
                 return null;
 
             }

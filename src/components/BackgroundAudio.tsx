@@ -11,6 +11,7 @@ const BackgroundAudio: React.FC<BackgroundAudioProps> = ({ href }) => {
   useEffect(() => {
     const audioElement = audioRef.current;
     if (audioElement) {
+      audioRef.current.volume = 0.3;
       audioElement.play();
     }
   }, []);

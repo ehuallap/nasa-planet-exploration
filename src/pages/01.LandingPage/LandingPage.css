@@ -55,6 +55,7 @@ body {
     /* Full width of the container */
     height: 30%;
     margin-top: 5%;
+    justify-content: center;
     /* Optional spacing above buttons */
 }
 

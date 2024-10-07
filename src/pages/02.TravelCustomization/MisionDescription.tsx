@@ -7,6 +7,9 @@ import useMisionStore from "../../store/store";
 import BackgroundAudio from "../../components/BackgroundAudio";
 import Audio  from '../../assets/sounds/pista.mp3'
 import Typing from '../../assets/sounds/typing.wav'
+import Welcome from '../../assets/sayings/welcome.mp3'
+
+
 const MisionDescription = () => {
 
     const [name, setNameLocal] = useState("");
@@ -36,13 +39,14 @@ const MisionDescription = () => {
     useEffect(() => {
         const audioElement = audioRef.current;
         if (audioElement) {
-        audioElement.play();
+            audioRef.current.volume = 1;
+            audioElement.play();
         }
     }, []);
 
     return (
         <div className='container-mision'>
-            <audio ref={audioRef} src={href} loop autoPlay />
+            <audio ref={audioRef} src={Welcome}/>
             <div className="left">
                 { text1 && <DDTitle text="Welcome Space Walker" fontSize='35px' color='white' audioSrc={Typing}></DDTitle>}
                 { text2 && <DDTitle text="You have been selected to be part of the mission 'Lost Worlds', you'll have to explore the strangest and most peculiar exoplanets in the Milky Way" fontSize='30px' color='white' audioSrc={Typing}></DDTitle>}

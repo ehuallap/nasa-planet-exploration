@@ -42,12 +42,13 @@ type CardPlanetarySystemProps = {
   text: string;
 };
 
-const CardPlanetarySystem = ({clas, slug, text}) => {
+const CardPlanetarySystem = ({clas, slug, text, blocked}) => {
   const audio = new Audio(HoverAudio);
   const audioClick = new Audio(ClickAudio);
     const { planetarySystem, setPlanetarySystem } = useMisionStore();
     const navigate = useNavigate();
     const changePlanetarySystem = ( option : string) => {
+      if(!blocked){
         audioClick.play()
         const filtered = exoplanetsData.filter((item) => item.solar_system === option)
         const mapped = filtered.map(obj => ({
@@ -57,6 +58,7 @@ const CardPlanetarySystem = ({clas, slug, text}) => {
         }));
         setPlanetarySystem(slug, mapped);
         navigate("/select-spaceship")
+      }
     }
 
   const handleMouseEnter = () => {
@@ -75,6 +77,7 @@ const CardPlanetarySystem = ({clas, slug, text}) => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
+      {blocked && <p className='blocked-text'>Coming soon</p>}
       <p className="text-overlay">{text}</p>
     </div>
   );

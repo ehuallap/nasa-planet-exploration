@@ -15,7 +15,7 @@ const Video = () => {
   const {currentExoplanet} = useMisionStore()
   const navigate = useNavigate();
   currentExoplanet.explored = true
-  const videoUrl = currentExoplanet.url_video;
+  const videoUrl = currentExoplanet.url_videos[0];
   const videoId = videoUrl.split('v=')[1]; 
   //const ampersandPosition = videoId.indexOf('&');
   // if (ampersandPosition !== -1) {

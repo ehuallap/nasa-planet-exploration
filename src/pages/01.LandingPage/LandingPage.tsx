@@ -14,7 +14,7 @@ const LandingPage = () => {
                     <DDTitle text='VIAJA Y DESCUBRE NUEVOS EXOPLANETAS' fontSize='80px' color='white'></DDTitle>
                 </div>
                 <div className='button-container'>
-                    <DDButton href="mision-description">Start Mission</DDButton>
+                    <DDButton href="mision-description">START MISSION</DDButton>
                     {/* <DDExoplanet />
                     <DDSpaceship /> */}
                 </div>
