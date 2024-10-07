@@ -1,9 +1,13 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './ModalIcon.css'; // Importar estilos
-
 const ModalIcon = ({ imagen, texto, darker, onClick, title="", tamaño = '60px' }) => {
   const [hover, setHover] = useState(false);
-  const url_icon = new URL("../../assets/icons/" + imagen, import.meta.url).href
+  const [icon_url, setIconUrl] = useState(null);
+  const url_icon = new URL(`../../assets/icons/${imagen}`, import.meta.url).href
+  useEffect(()=>{
+    console.log("url_icon", url_icon)
+    setIconUrl(url_icon)
+  }, [])
   const [dar, setDar] = useState(darker);
   const onClicked = () => {
     setDar(!dar);
@@ -13,7 +17,7 @@ const ModalIcon = ({ imagen, texto, darker, onClick, title="", tamaño = '60px' 
   return (
     <div className="icon-container">
       <img
-        src={url_icon}
+        src={icon_url}
         alt="Imagen"
         style={{ width: tamaño, height: tamaño}}
         //className="icon-imagen darker"
