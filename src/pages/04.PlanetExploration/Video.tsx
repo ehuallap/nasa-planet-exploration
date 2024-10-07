@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DDButton from "../../components/DDButton";
 import useMisionStore from "../../store/store";
@@ -15,12 +15,16 @@ const Video = () => {
   const {currentExoplanet} = useMisionStore()
   const navigate = useNavigate();
   currentExoplanet.explored = true
+  const [videoId, setVideoId] = useState(currentExoplanet.url_videos[0].split('v=')[1])
   const videoUrl = currentExoplanet.url_videos[0];
-  const videoId = videoUrl.split('v=')[1]; 
+  //const videoId = videoUrl.split('v=')[1]; 
   //const ampersandPosition = videoId.indexOf('&');
   // if (ampersandPosition !== -1) {
   //   videoId = videoId.substring(0, ampersandPosition); // Si hay un "&", corta el ID hasta esa posición
   // }
+  useEffect(()=>{
+    setVideoId(currentExoplanet.url_videos[0].split('v=')[1])
+  }, [])
 
 
   const loadYouTubeAPI = () => {
@@ -34,7 +38,7 @@ const Video = () => {
     if (!window.YT) {
       loadYouTubeAPI();
     } else {
-      window.onYouTubeIframeAPIReady();
+      window.onYouTubeIframeAPIReady;
     }
 
     // Llamada cuando la API de YouTube está lista
