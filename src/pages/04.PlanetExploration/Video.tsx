@@ -38,7 +38,7 @@ const Video = () => {
     if (!window.YT) {
       loadYouTubeAPI();
     } else {
-      window.onYouTubeIframeAPIReady;
+      //window.onYouTubeIframeAPIReady;
     }
 
     // Llamada cuando la API de YouTube está lista
