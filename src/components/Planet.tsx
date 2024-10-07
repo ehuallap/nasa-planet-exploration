@@ -5,6 +5,8 @@ import cloudTexture from '../assets/textures/cloud-centauri-b.jpg';
 
 import { useNavigate } from "react-router-dom";
 import './Planet.css'
+import exoplanetsData from '../data/exoplanets.json'
+
 
 interface PlanetProps {
     top: string;
@@ -111,33 +113,34 @@ const Planet: React.FC<PlanetProps> = ({ top, left, size, name, onClick }) => {
       }
     }
 
-    const [planets, setPlanets] = useState<PlanetClass[]>([]);
+    const [planets, setPlanets] = useState<Object[]>([]);
     const [planetObject, setPlanetObject] = useState<PlanetClass | null>(null);
-
+    setPlanets
     useEffect(() => {
 
-        const fetchData = async () => {
-            try {
-              const response = await fetch('/../src/data/exoplanets.json');
-              if (!response.ok) {
-                throw new Error('Network response was not ok');
-              }
+        // const fetchData = async () => {
+        //     try {
+        //       const response = await fetch('/../src/data/exoplanets.json');
+        //       if (!response.ok) {
+        //         throw new Error('Network response was not ok');
+        //       }
 
-                const jsonData: PlanetClass[] = await response.json();
+        //         const jsonData: PlanetClass[] = await response.json();
 
-                setPlanets(jsonData);
-            } catch (err) {
-                  console.log(err instanceof Error ? err.message : 'Unknown error');
-            }
-        };
+        //         setPlanets(jsonData);
+        //     } catch (err) {
+        //           console.log(err instanceof Error ? err.message : 'Unknown error');
+        //     }
+        // };
       
-        fetchData();
+        // fetchData();
+        setPlanets(exoplanetsData)
     }, [])
 
     useEffect( () => {
 
         const getPlanetByName = (name: string): PlanetClass | null => {
-            const planetFound: any = planets.find(planet => planet.name == name);
+            const planetFound: any = planets.find(planet => planet["name"] == name);
 
             if (planetFound) {
                 console.log(planetFound)
